@@ -1,0 +1,10 @@
+.box_header{
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+}
+.ul_box{
+display: flex;
+list-style: none;
+gap: 20px;
+}
