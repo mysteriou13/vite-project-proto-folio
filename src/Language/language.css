@@ -1,0 +1,23 @@
+.box_language{
+    display: flex;
+    flex-direction: column;
+    border:1px solid black;   
+    width: fit-content; 
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.box_language p {
+    width: 50ch;
+}
+
+.img{
+    width: 100%;
+    height: 100%;
+}
+
+.box_img{
+    width: 8vw;
+    height: 14vh;
+}
