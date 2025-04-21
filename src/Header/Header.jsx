@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 import "./style.css"
 
 export default function header() {
@@ -11,9 +11,9 @@ export default function header() {
         <nav>
             <ul className='ul_box'>
                 
-                <li><a href="/acceuil">acceuil</a></li>
-                <li><a href="/project"> project</a> </li>
-                <li><a href = "/contact"> contact</a></li>
+                <li><Link to="/">acceuil</Link></li>
+                <li><Link to="/project"> project</Link> </li>
+                <li><Link to = "/contact"> contact</Link></li>
 
             </ul>
         </nav>

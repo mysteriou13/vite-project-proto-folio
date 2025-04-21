@@ -1,6 +1,7 @@
 import React from 'react'
-import Language from '../Language/Language'
+import AppRouter from '../Router';
 import "./style.css"
+import App from '../App';
 export default function Main() {
 
   const language = [
@@ -31,12 +32,10 @@ export default function Main() {
 
   return (
     <>
+    <AppRouter/>
     <div className = 'main_box'> 
     
-      Main
-      {language.map((language) => <Language key = {language.id}  language={language} />)}
-        
-    
+  
      </div>
      </>
 
