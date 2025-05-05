@@ -6,7 +6,7 @@ import Contact from './Page/Contact/Contact.jsx'; // Exemple de page
 import Project from './Page/Project/Project.jsx'; // Exemple de page
 
 
-export default function AppRouter() {
+export default function Router() {
   return (
     <BrowserRouter>
       <Routes>

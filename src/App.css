@@ -1,3 +1,7 @@
+:root {
+  --color-primary: #DEF1FF;
+
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
