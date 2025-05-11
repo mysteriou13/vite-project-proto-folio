@@ -1,6 +1,44 @@
+.form_contact{                                  
+    height: 100%;
+    border-radius: 13px;
+    background-color: white;
+}
+
+.div_input_Contact {
+   display: flex;
+    flex-direction: column;
+    
+}
+.label_input_Contact{
+background-color: #9EC4FF;
+    width: 61%;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 36px;
+}
+.form_contact input{
+    width: 83%;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    border: 4px solid #D0EAFE;
+}
+
+.main_input_Contact{
+
+      position: relative;
+    left: 2%;
+    top: 3%;
+
+}
 .Container_contact{
-
+      background-color: white;
+    box-shadow: -44px 82px 168px grey;
     background: linear-gradient(to right, #DEF1FF, #F0F4FF);
-    height: 83vh;
-
+    height: 80vh;
+    width: 68vw;
+   
+    border-radius: 19px;
 }

@@ -11,19 +11,28 @@ export default function Contact() {
       {
         title:"nom",
         typeinput:"text",
-        name:"nom"
+        name:"nom",
+        inputClass:"form_contact input",
+        labelinput:"label_input_Contact",
+        divinput:"div_input_Contact"
       },
 
       {
         title:"prenom",
         typeinput:"text",
-        name:"prenom"
+        name:"prenom",
+        inputClass:"form_contact input",
+        labelinput:"label_input_Contact",
+         divinput:"div_input_Contact"
       },
 
       {
         title:"email",
         typeinput:"email",
-        name:"email"
+        name:"email",
+        inputClass:"form_contact input",
+        labelinput:"label_input_Contact",
+         divinput:"div_input_Contact"
       },
   ]
   )
@@ -35,18 +44,28 @@ export default function Contact() {
   }
   
   return (
-    <div className='Container_contact'>
+<>
+        
+
+
+    <div className='main_contact'>
       
-      Contact
+       <div>Contact</div>
 
-     <form onSubmit={submit}>
+      <div className='Container_contact'>
 
+     <form onSubmit={submit} className='form_contact'>
+
+    <div className='main_input_Contact'>
        {tabInput.map((data)=> <Input data={data} />
 
        )}
+       </div>
 
      </form>
 
     </div>
+    </div>
+    </>
   )
 }
