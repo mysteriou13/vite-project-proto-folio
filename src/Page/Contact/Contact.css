@@ -34,11 +34,21 @@ background-color: #9EC4FF;
 
 }
 .Container_contact{
-      background-color: white;
-    box-shadow: -44px 82px 168px grey;
-    background: linear-gradient(to right, #DEF1FF, #F0F4FF);
-    height: 80vh;
-    width: 68vw;
-   
-    border-radius: 19px;
+box-shadow: -11px 16px 42px gray;
+  background: linear-gradient(to right, #DEF1FF, #F0F4FF);
+  height: 69vh;
+  width: 79vw;
+  border-radius: 19px;
+  position: relative;
+  left: 3%;
+
+}
+
+.main_contact{
+    position: relative;
+  top: 3vh;
+}
+
+.title_contact{
+    height: 6vh;
 }

@@ -1,10 +1,11 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../Header/header';
-
+import Header from '../Header/Header';
+import './Layout.css';
 export default function Layout() {
   return (
-    <div style = {{ display: 'flex' }}>
+    <div  className = "main_layout">
+      <div className='barre_header'> barre header </div>
+    <div  style = {{ display: 'flex' }}>
 
     <div>
      <Header/>
@@ -13,6 +14,7 @@ export default function Layout() {
       <main>
         <Outlet /> {/* Rend les routes enfants ici */}
       </main>      
+    </div>
     </div>
       </div>
   );

@@ -1,0 +1,34 @@
+.box_header{
+  margin-right: 33px;
+  border-radius: 6px;
+  
+background: linear-gradient(to top, #2067DA 0%, #3079ED 50%,#3D87FC  80%);
+box-shadow: 1px 5px 19px grey;
+   height: 75vh;
+  position: relative;
+  left: 11%;
+  width: 11vw;
+  top: 1%;
+
+}
+.ul_box{
+
+  list-style: none;
+  padding: 0;
+  padding-top: 11%;
+}
+
+.link_nav_header {
+display: flex;
+  background-color: #72C1FE;
+  border-radius: 43px;
+  height: 30px;
+  margin-bottom: 19%;
+  font-size: 1.5em;
+ 
+}
+
+.link_nav_header:hover{
+  color:black;
+  background-color: white;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Input from '../../input/input'
+import Input from '../../input/Input'
 
 import "./Contact.css"
 
@@ -50,7 +50,7 @@ export default function Contact() {
 
     <div className='main_contact'>
       
-       <div>Contact</div>
+       <div className='title_contact'>Contact</div>
 
       <div className='Container_contact'>
 
