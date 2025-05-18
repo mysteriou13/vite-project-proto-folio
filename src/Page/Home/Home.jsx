@@ -1,10 +1,12 @@
 
+import TitlePage from "../../Componement/TitlePage/TitlePage"
+
 export default function Home() {
   return (
     
     <div>
       <div>
-      Home
+         <TitlePage title="Massa Anthony" classStyle="titlePage"/>
       </div>
       </div>
     

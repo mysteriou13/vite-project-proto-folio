@@ -29,8 +29,7 @@ background-color: #9EC4FF;
 .main_input_Contact{
 
       position: relative;
-    left: 2%;
-    top: 3%;
+    top: -3%;
 
 }
 .Container_contact{
@@ -44,11 +43,3 @@ box-shadow: -11px 16px 42px gray;
 
 }
 
-.main_contact{
-    position: relative;
-  top: 3vh;
-}
-
-.title_contact{
-    height: 6vh;
-}

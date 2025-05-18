@@ -8,8 +8,22 @@ box-shadow: -17px 46px 118px gray;
   border-radius: 8px;
 }
 
-.barre_header{
+.barre_layout{
     background-color: blue;
 
   height: 8vh;
+  border-radius: 82px;
+  box-shadow: 0px 13px 9px black;
+}
+
+
+.title_layout{
+position: relative;
+  top: 2vh;
+  left: 33%;
+  height: 9vh;
+  font-size: 2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  font-weight: bold;
 }

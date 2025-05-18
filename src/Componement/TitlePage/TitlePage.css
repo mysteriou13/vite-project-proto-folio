@@ -1,0 +1,12 @@
+.titlePage{
+position: relative;
+  top: 3vh;
+  left: 10%;
+  height: 9vh;
+  font-size: 2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000000;
+  padding: 10px;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import Input from '../../input/Input'
-
+import Input from '../../Componement/input/Input'
+import TitlePage from '../../Componement/TitlePage/TitlePage'
 import "./Contact.css"
 
 export default function Contact() {
@@ -45,12 +45,9 @@ export default function Contact() {
   
   return (
 <>
-        
-
-
-    <div className='main_contact'>
+    <div className='main_input_Contact'>
       
-       <div className='title_contact'>Contact</div>
+       <TitlePage title="Contact" classStyle="titlePage"/>
 
       <div className='Container_contact'>
 
