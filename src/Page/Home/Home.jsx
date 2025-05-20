@@ -6,7 +6,7 @@ export default function Home() {
     
     <div>
       <div>
-         <TitlePage title="Massa Anthony" classStyle="titlePage"/>
+         <TitlePage title="Creation de solution web" classStyle="titlePage"/>
       </div>
       </div>
     
