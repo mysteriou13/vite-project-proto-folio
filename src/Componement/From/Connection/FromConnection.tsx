@@ -18,8 +18,10 @@ export default function FormConnection() {
         body: JSON.stringify({ name, password, role }),
       })
 
-      
+     const data = await response.json();      
     
+     console.log(data);
+
       // Ici tu peux gérer la réponse (ex : sauvegarder token, rediriger, etc.)
     } catch (error) {
       console.error("Erreur lors de la connexion :", error)
