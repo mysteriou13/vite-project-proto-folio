@@ -9,6 +9,8 @@ import Inscription from "./Page/Inscription/Inscription.tsx";
 import Connection from "./Page/Connection/Connection.tsx";
 
 export default function Router() {
+
+  
   return (
     <BrowserRouter>
       <Routes>

@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import loginReducer from './Slice' // chemin vers ton slice
+import loginReducer from './Slice' // par exemple
 
 export const store = configureStore({
   reducer: {
-    login: loginReducer, // login est le nom dans le state Redux
+    login: loginReducer,
+    // autres reducers...
   },
 })
 
+// Types Redux
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
