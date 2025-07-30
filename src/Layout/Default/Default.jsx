@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom';
-import TitlePage from '../Componement/TitlePage/TitlePage';
-import Header from '../Componement/Header/Header';
-import './Layout.css';
-export default function Layout() {
+import { Outlet } from 'react-router';
+import TitlePage from '../../Componement/TitlePage/TitlePage';
+import Header from '../../Componement/Header/Header';
+import './Default.css';
+export default function DefaultLayout() {
   return (
     <div  className = "main_layout">
       <div className='barre_layout'> 

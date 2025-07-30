@@ -1,9 +1,14 @@
 import { useState } from "react"
 
+import { useDispatch } from 'react-redux'
+import { setLogin } from "../../../Store/Slice"
+
 export default function FormConnection() {
   const [name, setName] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [role, setRole] = useState<string>("admin") // Si tu en as besoin
+  
+  const dispatch = useDispatch();
 
   const connection = async (e: React.FormEvent) => {
      e.preventDefault() // empêche le rechargement de la page
@@ -21,6 +26,15 @@ export default function FormConnection() {
      const data = await response.json();      
     
      console.log(data);
+
+     if(data.token){
+
+      dispatch(setLogin(true))
+      console.log("token connection");
+
+     }else{
+      dispatch(setLogin(true))
+     }
 
       // Ici tu peux gérer la réponse (ex : sauvegarder token, rediriger, etc.)
     } catch (error) {
