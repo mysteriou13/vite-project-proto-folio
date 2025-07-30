@@ -1,0 +1,32 @@
+.fromConnection{
+      box-shadow: 24px -5px 64px grey;
+    width: 62vw;
+    height: 69vh;
+    border-radius: 75px;
+    position: relative;
+    left: 18%;
+    top: 2vh;
+}
+
+
+.divMainConnection{
+     width: 40%;
+    position: relative;
+    left: 28%;
+    top: 21%;
+    font-size: 1.5em;
+}
+
+.boxInput{
+    font-size: 1.5em;
+   display: flex;
+    justify-content: space-between;
+}
+
+.ClassinputConnection{
+    height: 3vh;
+}
+
+.InputSubmitConnection{
+    font-size: 1.2em;
+}
