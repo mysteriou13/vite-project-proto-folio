@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import "./FromInscription.css"
+
 export default function FormInscription() {
     const [name, setName] = useState<string>("")
     const [password, setPassword] = useState<string>("")
@@ -31,33 +33,40 @@ export default function FormInscription() {
 
     return (
         <div>
-            <form onSubmit={inscription}>
-                <h1>Inscription</h1>
+         <form className = "fromConnection"onSubmit={inscription}>
+        <div className = "divMainConnection">
+        <h1>Inscription</h1>
+        <div className="boxInput">
+          <label>Nom</label>
+          <input
+          className="ClassinputConnection"
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
 
-                <div>
-                    <label>Nom</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                    />
-                </div>
+        <div className="boxInput">
+          <label>Mot de passe</label>
+          <input
+            className="ClassinputConnection"
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
 
-                <div>
-                    <label>Mot de passe</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                </div>
+        {/* Si tu utilises le rôle, ajoute un select ou input ici */}
 
-                <div>
-                    <input type="submit" value="Inscription" />
-                </div>
-            </form>
+        <div>
+          <input type="submit" value="Se connecter" className="InputSubmitConnection" />
+        </div>
+        </div>
+      </form>
         </div>
     )
 }
