@@ -3,9 +3,11 @@ import "./Header.css"
 
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../Store/store'
-
 export default function Header() {
+
   const isLoggedIn = useSelector((state: RootState) => state.login.login)
+
+  let role = useSelector((state:  RootState) => state.login.role)
 
   return (
     <div className="box_header">
@@ -14,6 +16,13 @@ export default function Header() {
           <li><Link className='link_nav_header' to="/">acceuil</Link></li>
           <li><Link className='link_nav_header' to="/project">project</Link></li>
           <li><Link className='link_nav_header' to="/contact">contact</Link></li>
+          
+          {role === "admin" &&(
+
+            <>
+             <li> <Link className='link_nav_header' to='/admin'>admin</Link>  </li>
+            </>
+          )}
 
           {!isLoggedIn && (
             <>

@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import DefaultLayout from "./Layout/Default/Default.jsx";
 import DisconnectLayout from "./Layout/Disconnect/DisconnectionLayout.tsx";
+import ZoneAdmin from "./Layout/ZoneAdmin/ZoneAdmin.tsx";
 import Home from './Page/Home/Home.jsx';
 import Contact from './Page/Contact/Contact.jsx'; // Exemple de page
 import Project from './Page/Project/Project.jsx'; // Exemple de page
@@ -25,6 +26,10 @@ export default function Router() {
 
         <Route path ="inscription" element = {<Inscription/>}/>
         <Route path = "connection" element = {<Connection/>}/>
+
+        </Route>
+
+        <Route path = "/admin" element = {<ZoneAdmin/>}>
 
         </Route>
 

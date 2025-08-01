@@ -1,7 +1,6 @@
 import { useState } from "react";
-
 import { useDispatch } from 'react-redux';
-import { setLogin } from "../../../Store/Slice";
+import { setLogin,setRoleUser } from "../../../Store/Slice";
 import "./FromConnection.css";
 
 export default function FormConnection() {
@@ -31,11 +30,12 @@ export default function FormConnection() {
      if(data.token){
 
       dispatch(setLogin(true))
-      console.log("token connection");
+      dispatch(setRoleUser(data.role))
 
      }else{
       dispatch(setLogin(true))
-     }
+       
+       }
 
       // Ici tu peux gérer la réponse (ex : sauvegarder token, rediriger, etc.)
     } catch (error) {
