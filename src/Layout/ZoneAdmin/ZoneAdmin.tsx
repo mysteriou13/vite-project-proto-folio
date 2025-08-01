@@ -14,7 +14,7 @@ export default function ZoneAdmin() {
     <div  className = "main_layout">
       <div className='barre_layout'> 
          </div>
-    <div  style = {{ display: 'flex' }}>
+    <div>
 
     <div>
      <Header/>

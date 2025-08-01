@@ -8,7 +8,7 @@ export default function DefaultLayout() {
       <div className='barre_layout'> 
         <TitlePage title="Massa Anthony  creation solution web" classStyle="title_layout"/>
          </div>
-    <div  style = {{ display: 'flex' }}>
+    <div  >
 
     <div>
      <Header/>

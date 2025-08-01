@@ -21,7 +21,7 @@ useEffect(() => {
       <div className="barre_layout">
         <TitlePage title="Massa Anthony création solution web" classStyle="title_layout" />
       </div>
-      <div style={{ display: 'flex' }}>
+      <div>
         <div>
           <Header />
         </div>

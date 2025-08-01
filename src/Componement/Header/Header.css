@@ -1,28 +1,23 @@
 .box_header{
-  margin-right: 33px;
-  border-radius: 6px;
-  
-background: linear-gradient(to top, #2067DA 0%, #3079ED 50%,#3D87FC  80%);
-box-shadow: 1px 5px 19px grey;
-   height: 75vh;
-  position: relative;
-  left: 11%;
-  width: 11vw;
-  top: 1%;
+    margin-right: 33px;
+    border-radius: 6px;
+    background: linear-gradient(to top, #2067DA 0%, #3079ED 50%, #3D87FC 80%);
+    box-shadow: 1px 5px 19px grey;
+    /* height: 75vh; */
+    position: relative;
+    left: 1%;
+    /* width: 11vw; */
+    top: 1%;
 
 }
 .ul_box{
-
+   display: flex;
+   justify-content: space-evenly;
   list-style: none;
-  padding: 0;
-  padding-top: 11%;
 }
 
 .link_nav_header {
-display: flex;
-    position: relative;
-    top: 3vh;
-    height: 9vh;
+   display: flex;
     font-size: 2em;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: white;
