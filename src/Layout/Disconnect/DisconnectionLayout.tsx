@@ -9,12 +9,7 @@ import { useEffect, useState } from 'react'
 
 
 export default function DisconnectLayout() {
- const isLoggedIn = useSelector((state: RootState) => state.login.login)
-const [login, setLogin] = useState<boolean>(isLoggedIn)
-
-useEffect(() => {
-  setLogin(isLoggedIn)
-}, [isLoggedIn])
+let login = useSelector((state: RootState) => state.login.login)
 
   return (
     <div className="main_layout">
