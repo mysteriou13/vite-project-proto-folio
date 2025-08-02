@@ -3,6 +3,8 @@
     width: 62vw;
     height: 69vh;
     border-radius: 75px;
+    position: relative;
+    left: 14%;
 }
 
 

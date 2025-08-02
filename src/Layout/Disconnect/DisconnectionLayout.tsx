@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux'
 import type { RootState } from '../../Store/store'
 
 import './DisconnectLayout.css'
-import { useEffect, useState } from 'react'
-
 
 export default function DisconnectLayout() {
 let login = useSelector((state: RootState) => state.login.login)
@@ -22,6 +20,7 @@ let login = useSelector((state: RootState) => state.login.login)
         </div>
         <div>
           <main>
+            
             {!login && <Outlet />}
           </main>
         </div>
