@@ -1,13 +1,11 @@
 import { Link } from 'react-router'
 import "./NavMenu.css"
 
-import { useSelector } from 'react-redux'
-import type { RootState } from '../../Store/store'
+import { useAppSelector } from '../../Store/hook'
 export default function NavMenu() {
 
-  const isLoggedIn = useSelector((state: RootState) => state.login.login)
-
-  let role = useSelector((state:  RootState) => state.login.role)
+  const isLoggedIn = useAppSelector(state => state.login.login)
+const role = useAppSelector(state => state.login.role)
 
   return (
     <div className="box_header">
