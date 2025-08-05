@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router'
 import TitlePage from '../../Componement/TitlePage/TitlePage'
-import Header from '../../Componement/Header/Header'
+import NavMenu from '../../Componement/NavMenu/NavMenu';
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../Store/store'
 
@@ -16,7 +16,7 @@ let login = useSelector((state: RootState) => state.login.login)
       </div>
       <div>
         <div>
-          <Header />
+          <NavMenu />
         </div>
         <div>
           <main>

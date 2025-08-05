@@ -1,9 +1,9 @@
 import { Link } from 'react-router'
-import "./Header.css"
+import "./NavMenu.css"
 
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../Store/store'
-export default function Header() {
+export default function NavMenu() {
 
   const isLoggedIn = useSelector((state: RootState) => state.login.login)
 

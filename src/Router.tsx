@@ -8,7 +8,7 @@ import Contact from './Page/Contact/Contact.jsx'; // Exemple de page
 import Project from './Page/Project/Project.jsx'; // Exemple de page
 import Inscription from "./Page/Inscription/Inscription.tsx";
 import Connection from "./Page/Connection/Connection.tsx";
-
+import AdminNavMenu from "./Page/Admin/Adminheader/Adminnavmenu.tsx";
 export default function Router() {
 
   
@@ -30,7 +30,7 @@ export default function Router() {
         </Route>
 
         <Route path = "/admin" element = {<ZoneAdmin/>}>
-
+         <Route path = "adminNavmenu" element  = {<AdminNavMenu/>}/>
         </Route>
 
       </Routes>
