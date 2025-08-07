@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { setLogin,setRoleUser } from "../../../Store/Slice";
+import { setLogin,setRoleUser } from "../../../Store/LoginSlice";
 import "./FromConnection.css";
 
 export default function FormConnection() {

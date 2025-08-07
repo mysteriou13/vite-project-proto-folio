@@ -1,11 +1,11 @@
 import { Link } from 'react-router'
 import "./NavMenu.css"
 
-import { useAppSelector } from '../../Store/hook'
+import { useAuth } from '../../Store/DataStore'
 export default function NavMenu() {
 
-  const isLoggedIn = useAppSelector(state => state.login.login)
-const role = useAppSelector(state => state.login.role)
+   const { isLoggedIn, role } = useAuth()
+
 
   return (
     <div className="box_header">
