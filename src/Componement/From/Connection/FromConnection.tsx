@@ -1,52 +1,25 @@
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { setLogin,setRoleUser } from "../../../Store/LoginSlice";
+import {useAppDispatch} from '../../../Store/hook'
+import { loginUser } from "../../../Store/thunksUser";
+
 import "./FromConnection.css";
 
 export default function FormConnection() {
-  const [name, setName] = useState<string>("")
-  const [password, setPassword] = useState<string>("")
-  const [role, setRole] = useState<string>("admin") // Si tu en as besoin
-  
-  const dispatch = useDispatch();
+ const [name, setName] = useState<string>("")
+const [password, setPassword] = useState<string>("")
+const [role, setRole] = useState<string>("admin")
 
-  const connection = async (e: React.FormEvent) => {
-     e.preventDefault()
+const dispatch = useAppDispatch()
 
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/login`, {
-        method: "POST", // méthode POST obligatoire pour login
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, password, role }),
-      })
-
-     const data = await response.json();      
-    
-     console.log(data);
-
-     if(data.token){
-
-      dispatch(setLogin(true))
-      dispatch(setRoleUser(data.role))
-
-     }else{
-      dispatch(setLogin(true))
-       
-       }
-
-      // Ici tu peux gérer la réponse (ex : sauvegarder token, rediriger, etc.)
-    } catch (error) {
-      console.error("Erreur lors de la connexion :", error)
-    }
-  }
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault()
+  dispatch(loginUser({ name, password, role }))
+}
 
   return (
     <div>
 
-      <form className = "fromConnection"onSubmit={connection}>
+      <form className = "fromConnection"onSubmit={handleSubmit}>
         <div className = "divMainConnection">
         <h1>Connexion</h1>
         <div className="boxInput">

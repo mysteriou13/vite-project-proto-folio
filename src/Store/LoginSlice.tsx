@@ -1,36 +1,48 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { loginUser } from './thunksUser'
 
-
-// Définir un type pour l'état du slice
-export interface LoginState {
-  login: boolean,
-  role:string
+interface LoginState {
+  login: boolean
+  role: string
+  loading: boolean
+  error: string | null
 }
 
-// État initial
 const initialState: LoginState = {
+  login: false,
+  role: '',
+  loading: false,
+  error: null
+}
 
-    login: false,
-    role:"",
-
-  }
-
-export const loginSlice = createSlice({
+const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    setLogin: (state, action: PayloadAction<boolean>) => {
+    setLogin(state, action) {
       state.login = action.payload
     },
-
-    setRoleUser: (state, action: PayloadAction<string>) =>{
+    setRoleUser(state, action) {
       state.role = action.payload
     }
-    
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(loginUser.pending, state => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loading = false
+        state.login = true
+        state.role = action.payload.role || ''
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload as string
+      })
   }
 })
 
-export const { setLogin,setRoleUser } = loginSlice.actions
-
-
+export const { setLogin, setRoleUser } = loginSlice.actions
 export default loginSlice.reducer

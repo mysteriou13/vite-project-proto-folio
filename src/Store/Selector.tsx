@@ -1,5 +1,9 @@
-// features/login/loginSelectors.ts
-import { RootState } from '../Store/store'
+// src/app/hooks.ts ou src/hooks/useAuth.ts
+import { useAppSelector } from './hook'
 
-export const selectIsLoggedIn = (state: RootState) => state.login.login 
-export const selectRole = (state: RootState) => state.login.role
+export function useAuth() {
+  const isLoggedIn = useAppSelector(state => state.login.login)
+  const role = useAppSelector(state => state.login.role)
+
+  return { isLoggedIn, role }
+}
