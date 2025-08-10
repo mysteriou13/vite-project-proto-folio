@@ -22,12 +22,7 @@ interface InscriptionPayload {
 }
 
 /*inscription user*/
-export const InscriptionUser = createAsyncThunk<
-  InscriptionResponse, 
-  InscriptionPayload
->(
-  'user/inscriptionUser',
-  async (credentials, thunkAPI) => {
+export const InscriptionUser = createAsyncThunk<InscriptionResponse, InscriptionPayload>('user/inscriptionUser',async (credentials, thunkAPI) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/user/inscription`, {
         method: 'POST',

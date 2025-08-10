@@ -1,0 +1,14 @@
+.div_link_admin{
+    background-color: blue;
+    color: white;
+    border-radius: 55px;
+    padding: 13px;
+    box-shadow: 0px 13px 9px black;
+    text-decoration: underline;
+    
+}
+
+.div_link_admin:hover{
+    cursor: pointer;
+     box-shadow: 0px 13px 9px white;
+}

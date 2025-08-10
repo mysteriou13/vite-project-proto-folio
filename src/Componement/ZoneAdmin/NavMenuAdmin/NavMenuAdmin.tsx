@@ -1,5 +1,6 @@
 import "./NavMenuAdmin.css"
 import { useNavigate } from "react-router"
+import LinkAdmin from "../LinkAdmin/LinkAdmin";
 export default function NavMenuAdmin() {
   let navigate = useNavigate();
   
@@ -7,8 +8,7 @@ export default function NavMenuAdmin() {
     <div className="main_nav_menu">
         <div onClick={()=> navigate("adminNavmenu")}>
 
-       Le nav menu
-        
+<LinkAdmin link="/Admin/AdminNavmenu" name="menu de navigation"/>        
         </div>
 
     </div>

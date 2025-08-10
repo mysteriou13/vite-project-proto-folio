@@ -10,12 +10,11 @@
 }
 
 .main_nav_menu div{
-    background-color: blue;
+
      text-decoration: underline;
 }
 
 .main_nav_menu div:hover{
-background-color: black;
 cursor: pointer;
 }
 
