@@ -1,17 +1,15 @@
 import { useState } from "react";
-
-type FormData = {
-  name: string;
-  address: string;
-  typelink: "default" | "user" | "admin" | "";
-};
+import { useAppDispatch } from "../../../../Store/hook";
+import { addNavMenu } from "../../../../Store/Thunks/thinksNavMenu";
+import type { FormData } from '../../../../Interface/InterfaceNavmenu';
 
 export default function FormAddNavMenu() {
+  const dispatch = useAppDispatch()
   // useState pour un seul formulaire
   const [dataform, setDataform] = useState<FormData>({
     name: "",
     address: "",
-    typelink: ""
+    typelink: "default"
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,9 +20,20 @@ export default function FormAddNavMenu() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if(Object.values(dataform).some((v) => v === "")){
+      console.log("error remplir tout les champs")
+    }else{
+      
+  dispatch(addNavMenu(dataform));  
+
+
+    }
+
     console.log("Données du formulaire :", dataform);
+
   };
 
   return (
