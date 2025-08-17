@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loginUser } from './thunksUser'
+import { loginUser } from '../Thunks/thunksUser'
 
 interface LoginState {
   login: boolean

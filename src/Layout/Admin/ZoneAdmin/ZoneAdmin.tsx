@@ -1,11 +1,11 @@
 
 import { Outlet } from 'react-router'
-import TitlePage from '../../Componement/TitlePage/TitlePage'
+import TitlePage from '../../../Componement/TitlePage/TitlePage'
 
-import NavMenuAdmin from '../../Componement/ZoneAdmin/NavMenuAdmin/NavMenuAdmin'
-import FormConnection from '../../Componement/From/Connection/FromConnection'
+import NavMenuAdmin from '../../../Componement/ZoneAdmin/NavMenuAdmin/NavMenuAdmin'
+import FormConnection from '../../../Componement/From/User/Connection/FromConnection'
 import { useSelector } from 'react-redux'
-import type { RootState } from '../../Store/store'
+import type { RootState } from '../../../Store/store'
 import './ZoneAdmin.css'
 export default function ZoneAdmin() {
 

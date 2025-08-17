@@ -1,4 +1,4 @@
-import FromConnection from '../../Componement/From/Connection/FromConnection'
+import FromConnection from '../../Componement/From/User/Connection/FromConnection'
 export default function Connection() {
   return (
     <div>

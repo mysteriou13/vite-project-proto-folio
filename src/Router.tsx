@@ -2,13 +2,14 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import DefaultLayout from "./Layout/Default/Default.jsx";
 import DisconnectLayout from "./Layout/Disconnect/DisconnectionLayout.tsx";
-import ZoneAdmin from "./Layout/ZoneAdmin/ZoneAdmin.tsx";
+import ZoneAdmin from "./Layout/Admin/ZoneAdmin/ZoneAdmin.tsx";
 import Home from './Page/Home/Home.jsx';
 import Contact from './Page/Contact/Contact.jsx'; // Exemple de page
 import Project from './Page/Project/Project.jsx'; // Exemple de page
 import Inscription from "./Page/Inscription/Inscription.tsx";
 import Connection from "./Page/Connection/Connection.tsx";
-import AdminNavMenu from "./Page/Admin/Adminheader/Adminnavmenu.tsx";
+import AddNavMenu from "./Page/PageAdmin/AddNavMenu/AddNavMenu.tsx";
+import AdminNavMenu from "./Layout/Admin/LayoutAdminNavMenu/AdminNavMenu.tsx";
 export default function Router() {
 
   
@@ -29,9 +30,12 @@ export default function Router() {
 
         </Route>
 
-        <Route path = "/admin" element = {<ZoneAdmin/>}>
-         <Route path = "adminNavmenu" element  = {<AdminNavMenu/>}/>
-        </Route>
+       <Route path="/admin" element={<ZoneAdmin />}>
+  <Route path="adminNavMenu" element={<AdminNavMenu />} />
+  <Route path="addNavMenu" element={<AddNavMenu />} />
+      </Route>
+
+
 
       </Routes>
     </BrowserRouter>

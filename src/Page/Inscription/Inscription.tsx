@@ -1,4 +1,4 @@
-import FromInscription from "../../Componement/From/Inscription/FromInscription"
+import FromInscription from "../../Componement/From/User/Inscription/FromInscription"
 export default function Inscription() {
   return (
     <div>

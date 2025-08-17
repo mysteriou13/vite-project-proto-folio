@@ -1,6 +1,6 @@
 import { useState } from "react";
-import {useAppDispatch} from '../../../Store/hook'
-import { loginUser } from "../../../Store/thunksUser";
+import {useAppDispatch} from '../../../../Store/hook'
+import { loginUser } from "../../../../Store/Thunks/thunksUser";
 
 import "./FromConnection.css";
 

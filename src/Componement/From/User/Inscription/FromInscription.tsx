@@ -1,6 +1,6 @@
 import { useState } from "react"
-import {useAppDispatch} from '../../../Store/hook'
-import { InscriptionUser } from "../../../Store/thunksUser";
+import {useAppDispatch} from '../../../../Store/hook'
+import { InscriptionUser } from "../../../../Store/Thunks/thunksUser";
 import "./FromInscription.css"
 
 export default function FormInscription() {

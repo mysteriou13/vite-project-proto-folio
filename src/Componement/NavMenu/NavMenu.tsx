@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import "./NavMenu.css"
 
-import { useAuth } from '../../Store/Selector'
+import { useAuth } from '../../Store/Selector/SelectorUser'
 export default function NavMenu() {
 
    const { isLoggedIn, role } = useAuth()

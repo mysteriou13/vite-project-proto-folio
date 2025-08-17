@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { setLogin, setRoleUser } from './LoginSlice'
+import { setLogin, setRoleUser } from '../Slice/LoginSlice'
 
 interface LoginPayload {
   name: string

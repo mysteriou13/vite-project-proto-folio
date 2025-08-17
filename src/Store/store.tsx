@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import loginReducer from './LoginSlice'
+import loginReducer from './Slice/LoginSlice'
 
 export const store = configureStore({
   reducer: {
