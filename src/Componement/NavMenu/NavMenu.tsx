@@ -15,20 +15,24 @@ export default function NavMenu() {
  const dispatch = useAppDispatch();
 const { isLoggedIn, role } = useAuth();
 const { items } = navSelector()
-let [itemtab,setitemtab] = useState<LinkNav[]>([])
+let [itemtab,setitemtab] = useState<LinkNav[]>([]);
+
+let [itemfilter,setitemfilter] = useState<LinkNav[]>([]);
 
   // 🔹 Charger les données d au montage du composant
   useEffect(() => {
     dispatch(readNavMenu());
   }, [dispatch]);
 
+  /*load data navlink load page*/
 useEffect(() => {
-    setitemtab(items.data)
-
-    console.log("itemtab", items.data);
-
-  
+     let datatab = items.data.filter((datalink: { typelink: string })=> datalink.typelink == "default" || datalink.typelink == "invisibleuserconnect")
+    setitemtab(datatab)  
 }, [items]);
+
+useEffect(()=>{
+
+},[role,isLoggedIn])
 
   return (
     <div className="box_header">
@@ -36,7 +40,10 @@ useEffect(() => {
          
       <nav>
         <ul className='ul_box'>
+  
           <>
+        
+
           { itemtab.map((data)=> 
           
           <LinkNavMenu data = {data}/>
