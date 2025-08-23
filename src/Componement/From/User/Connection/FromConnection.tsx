@@ -7,7 +7,7 @@ import "./FromConnection.css";
 export default function FormConnection() {
  const [name, setName] = useState<string>("")
 const [password, setPassword] = useState<string>("")
-const [role, setRole] = useState<string>("admin")
+const [role, _setRole] = useState<string>("admin")
 
 const dispatch = useAppDispatch()
 
