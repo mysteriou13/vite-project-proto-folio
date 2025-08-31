@@ -2,8 +2,7 @@
 import { useAppSelector } from '../hook'
 
 export function useAuth() {
-  const isLoggedIn = useAppSelector(state => state.login.login)
-  const role = useAppSelector(state => state.login.role)
+  const {login ,role}= useAppSelector(state => state.login)
 
-  return { isLoggedIn, role }
+  return { login, role }
 }

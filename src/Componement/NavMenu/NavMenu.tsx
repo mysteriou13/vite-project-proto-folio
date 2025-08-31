@@ -20,7 +20,7 @@ export default function NavMenu() {
   };
 
   const dispatch = useAppDispatch();
-  const { isLoggedIn, role } = useAuth();
+  const { login, role } = useAuth();
   const { items } = navSelector() as  object as { items: ItemsState }; // préciser la structure de items
   const [filtreitem, setfilteritem] = useState<LinkNav[]>([]);
 
@@ -35,7 +35,7 @@ export default function NavMenu() {
 
     let filtered: LinkNav[] = [];
 
-    if (!isLoggedIn) {
+    if (!login) {
       filtered = items.data.filter(
         (link) =>
           link.typelink === 'default' || link.typelink === 'invisibleuserconnect'
@@ -50,7 +50,7 @@ export default function NavMenu() {
     }
 
     setfilteritem(filtered);
-  }, [items, isLoggedIn, role]);
+  }, [items, login, role]);
 
   return (
     <div className="box_header">
