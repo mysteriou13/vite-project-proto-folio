@@ -4,20 +4,12 @@ import { readNavMenu } from '../../Store/Thunks/thunksNavMenu';
 import { useAuth } from '../../Store/Selector/SelectorUser';
 import { navSelector } from '../../Store/Selector/SelectorNavMenu';
 import LinkNavMenu from '../LinkNavMenu/LinkNavMenu';
+import type { LinkNav,ItemsState } from '../../Interface/InterfaceNavmenu';
 import './NavMenu.css';
 
 export default function NavMenu() {
   // Type des liens de navigation
-  type LinkNav = {
-    _id: string;
-    name: string;
-    address: string;
-    typelink: string;
-  };
-
-  type ItemsState = {
-    data: LinkNav[];
-  };
+ 
 
   const dispatch = useAppDispatch();
   const { login, role } = useAuth();

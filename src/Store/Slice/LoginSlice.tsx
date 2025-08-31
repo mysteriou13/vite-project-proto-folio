@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 import { loginUser } from '../Thunks/thunksUser'
 
 interface LoginState {
@@ -19,10 +20,10 @@ const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    setLogin(state, action) {
+    setLogin(state, action:PayloadAction<boolean>) {
       state.login = action.payload
     },
-    setRoleUser(state, action) {
+    setRoleUser(state, action:PayloadAction<string>) {
       state.role = action.payload
     }
   },
