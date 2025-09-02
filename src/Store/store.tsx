@@ -1,15 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import loginReducer from './Slice/LoginSlice'
-import   navMenuSlice from "./Slice/NavSlice"
+import { configureStore } from '@reduxjs/toolkit';
+import loginReducer from './Slice/LoginSlice';
+import navMenuSlice from './Slice/NavSlice';
+import  ApiNavMenu   from './api/ApiNavMenu/ApiNavMenu'; // ton createApi
 
 export const store = configureStore({
   reducer: {
     login: loginReducer,
-    navMenuSlice:navMenuSlice
-    // autres reducers...
+    navMenuSlice: navMenuSlice,
+    [ApiNavMenu.reducerPath]: ApiNavMenu.reducer, // ajoute le slice RTK Query
   },
-})
-
-// Types Redux
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(ApiNavMenu.middleware), // middleware nécessaire pour RTK Query
+});
