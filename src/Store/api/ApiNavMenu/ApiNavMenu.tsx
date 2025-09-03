@@ -5,8 +5,8 @@ export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder) => ({
-    getNavMenu: builder.query<NavDataLink[], void>({ // on récupère un tableau
-      query: () => '/navmenu/readnavmenu', // équivalent de ton fetch
+    getNavMenu: builder.query<{ data: NavDataLink[] }, void>({
+      query: () => '/navmenu/readnavmenu',
     }),
   }),
 });

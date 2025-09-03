@@ -8,29 +8,33 @@ import './NavMenu.css';
 export default function NavMenu() {
   const { login, role } = useAuth();
   const { data, isLoading, error } = useGetNavMenuQuery();
-  const [filteredItems, setFilteredItems] = useState<LinkNav[]>([]);
-console.log(data);
-  useEffect(() => {
-    if (!data?.data) return;
+const [filtreitem, setFilterItem] = useState<LinkNav[]>([]);
 
-    let filtered: LinkNav[] = [];
+/**/
+useEffect(() => {
+  if (!data?.data) return;
 
-    if (!login) {
-      filtered = data.data.filter(
-        (link: { typelink: string; }) =>
-          link.typelink === 'default' || link.typelink === 'invisibleuserconnect'
-      );
-    } else if (role === 'user') {
-      filtered = data.data.filter((link: { typelink: string; }) => link.typelink === 'default');
-    } else if (role === 'admin') {
-      filtered = data.data.filter(
-        (link:{typelink:string}) =>
-          link.typelink === 'default' || link.typelink === 'visibleadminconnect'
-      );
-    }
+  let filtered: LinkNav[] = [];
 
-    setFilteredItems(filtered);
-  }, [data, login, role]);
+  if (!login) {
+    filtered = data.data.filter(
+      (link) =>
+        link.typelink === "default" ||
+        link.typelink === "invisibleuserconnect"
+    );
+  } else if (role === "user") {
+    filtered = data.data.filter((link) => link.typelink === "default");
+  } else if (role === "admin") {
+    filtered = data.data.filter(
+      (link) =>
+        link.typelink === "default" ||
+        link.typelink === "visibleadminconnect"
+    );
+  }
+
+  // 
+  setFilterItem(filtered);
+}, [data, login, role]);
 
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>Erreur lors du chargement</p>;
@@ -39,7 +43,7 @@ console.log(data);
     <div className="box_header">
       <nav>
         <ul className="ul_box">
-          {filteredItems.map((link) => (
+          {filtreitem.map((link) => (
             <li key={link._id}>
               <LinkNavMenu data={link} />
             </li>
