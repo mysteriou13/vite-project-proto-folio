@@ -1,7 +1,7 @@
 
 /*link nav */
  export type LinkNav = {
-    _id: string;
+    _id?: string;
     name: string;
     address: string;
     typelink: string;
@@ -14,7 +14,7 @@
 
 // add nav navLink
 export type NavDataLink = {
-  _id: string;
+  _id?: string;
   name: string;
   address: string;
   typelink:

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import  "./FromAddNavMenu.css"
-import { useAppDispatch } from "../../../../Store/hook";
-import { addNavMenu } from "../../../../Store/Thunks/thunksNavMenu";
+import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu/ApiNavMenu";
 import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
 
 export default function FormAddNavMenu() {
-  const dispatch = useAppDispatch();
+
+const [addNavLink, { isLoading }] = useAddNavLinkMutation();
 
   // useState pour gérer le formulaire
   const [dataform, setDataform] = useState<NavDataLink>({
@@ -36,8 +36,7 @@ export default function FormAddNavMenu() {
     }
 
     // Envoi au backend via Redux Thunk
-    dispatch(addNavMenu(dataform));
-
+     await addNavLink(dataform).unwrap();
     // Reset du formulaire
     setDataform({
       name: "",
