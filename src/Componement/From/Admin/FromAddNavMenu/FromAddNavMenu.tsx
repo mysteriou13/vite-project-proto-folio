@@ -1,6 +1,6 @@
 import { useState } from "react";
 import  "./FromAddNavMenu.css"
-import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu/ApiNavMenu";
+import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu";
 import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
 
 export default function FormAddNavMenu() {

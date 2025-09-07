@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { NavDataLink } from '../../../Interface/InterfaceNavmenu';
+import type { NavDataLink } from '../../Interface/InterfaceNavmenu';
 
 export const ApiNavMenu= createApi({
   reducerPath: 'api',

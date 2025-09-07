@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../Store/Selector/SelectorUser';
-import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu/ApiNavMenu';
+import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu';
 import LinkNavMenu from '../LinkNavMenu/LinkNavMenu';
 import type { LinkNav } from '../../Interface/InterfaceNavmenu';
 import './NavMenu.css';

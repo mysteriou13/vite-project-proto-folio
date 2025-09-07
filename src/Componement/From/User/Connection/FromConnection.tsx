@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useAppDispatch} from '../../../../Store/hook'
-import { loginUser } from "../../../../Store/Thunks/thunksUser";
+import { setLogin,setRoleUser } from "../../../../Store/Slice/LoginSlice";
+import { useLoginUserMutation } from "../../../../Store/api/ApiUser";
 
 import "./FromConnection.css";
 
@@ -8,12 +9,25 @@ export default function FormConnection() {
  const [name, setName] = useState<string>("")
 const [password, setPassword] = useState<string>("")
 const [role, _setRole] = useState<string>("admin")
-
-const dispatch = useAppDispatch()
-
-const handleSubmit = (e: React.FormEvent) => {
+const [loginUser, {isLoading,error}] = useLoginUserMutation();
+const dispatch = useAppDispatch();
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault()
-  dispatch(loginUser({ name, password, role }))
+
+  
+  try {
+   const result = await loginUser({ name, password }).unwrap()
+   
+   if(result){
+    dispatch(setLogin(true))
+    dispatch(setRoleUser(role))
+       
+   }
+
+  }catch(error){
+
+  }
+
 }
 
   return (
@@ -22,7 +36,7 @@ const handleSubmit = (e: React.FormEvent) => {
       <form className = "fromConnection"onSubmit={handleSubmit}>
         <div className = "divMainConnection">
         <h1>Connexion</h1>
-        <div className="boxInput">
+        <div className="boxInput">{}
           <label>Nom</label>
           <input
           className="ClassinputConnection"
