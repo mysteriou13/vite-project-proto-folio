@@ -1,0 +1,11 @@
+.AdminConnection{
+    position: relative;
+    top: -7%;
+    left: 23%;
+}
+
+.boxadmin{
+ display: flex;
+    position: relative;
+    top: 3vh;
+}
