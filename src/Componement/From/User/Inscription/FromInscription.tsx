@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {useAppDispatch} from '../../../../Store/hook'
-import { InscriptionUser } from "../../../../Store/Thunks/thunksUser";
+import { useInscriptionUserMutation } from "../../../../Store/api/ApiUser";
 import "./FromInscription.css"
 
 export default function FormInscription() {
@@ -9,13 +9,16 @@ export default function FormInscription() {
 
     const [name, setName] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const [role, setRole] = useState<string>("admin")
+    const [role, setRole] = useState<string>("user")
+    const [inscriptionUser] = useInscriptionUserMutation()
 
-    const inscription = async (e: React.FormEvent<HTMLFormElement>) => {
+    const inscription = async (e: React.FormEvent) => {
         e.preventDefault() // empêche le rechargement de la page
-     
-          dispatch(InscriptionUser({name,password}))
-    
+         
+        const result = await inscriptionUser({name,password,role})
+         if(result){
+           
+         }
     }
 
     return (

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { loginUser } from '../Thunks/thunksUser'
+
 
 interface LoginState {
   login: boolean
@@ -27,22 +27,7 @@ const loginSlice = createSlice({
       state.role = action.payload
     }
   },
-  extraReducers: builder => {
-    builder
-      .addCase(loginUser.pending, state => {
-        state.loading = true
-        state.error = null
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.loading = false
-        state.login = true
-        state.role = action.payload.role || ''
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.payload as string
-      })
-  }
+
 })
 
 export const { setLogin, setRoleUser } = loginSlice.actions
