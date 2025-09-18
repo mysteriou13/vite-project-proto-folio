@@ -1,19 +1,18 @@
+import "./input.css";
+import type { inputInterface } from "../../Interface/InterfaceInput";
 
-import "./input.css"
-
-export default function Input({data}) {
-
-    const {title, typeinput, name,inputClass,labelinput,divinput} = data
+export default function Input({ label, type, name, value, onChange }: inputInterface) {
   return (
-    <div className={divinput}>
-
-      <div className={labelinput}>
-        <label> {title} </label> 
-       </div> 
-
-       <div>
-        <input className={inputClass} type = {typeinput} name = {name} />
-      </div>
+    <div className="boxInput">
+      <label>{label}</label>
+      <input
+        className="ClassinputConnection"
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}  // ← ici tu relies bien au setter
+        required
+      />
     </div>
-  )
+  );
 }
