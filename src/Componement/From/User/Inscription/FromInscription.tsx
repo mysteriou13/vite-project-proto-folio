@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../../../Store/hook";
-import Input from "../../../input/Input";
 import FromSing from "../../FromSing/FromSing";
 import { useInscriptionUserMutation } from "../../../../Store/api/ApiUser";
 import "./FromInscription.css";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 
 export default function FormInscription() {
-  const dispatch = useAppDispatch();
-
+  
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [role] = useState<string>("user");

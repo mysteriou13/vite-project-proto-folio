@@ -2,6 +2,8 @@ import { useState } from "react";
 import {useAppDispatch} from '../../../../Store/hook'
 import { setLogin,setRoleUser } from "../../../../Store/Slice/LoginSlice";
 import { useLoginUserMutation } from "../../../../Store/api/ApiUser";
+import { inputInterface } from "../../../../Interface/InterfaceInput";
+import FromSing from "../../FromSing/FromSing";
 
 import "./FromConnection.css";
 
@@ -11,10 +13,8 @@ const [password, setPassword] = useState<string>("")
 const [role, _setRole] = useState<string>("admin")
 const [loginUser, {isLoading,error}] = useLoginUserMutation();
 const dispatch = useAppDispatch();
-const handleSubmit = async (e: React.FormEvent) => {
+const LoginSubmit = async (e: React.FormEvent) => {
   e.preventDefault()
-
-  
   try {
    const result = await loginUser({ name, password }).unwrap()
    
@@ -30,43 +30,27 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 }
 
+  let tapinput:inputInterface[] = [
+    {
+      label: "Nom",
+      name: "name",
+      type: "text",
+      value: name,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value),
+    },
+    {
+      label: "Mot de passe",
+      name: "password",
+      type: "password",
+      value: password,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+    },
+  ];
+
   return (
     <div>
 
-      <form className = "fromConnection"onSubmit={handleSubmit}>
-        <div className = "divMainConnection">
-        <h1>Connexion</h1>
-        <div className="boxInput">{}
-          <label>Nom</label>
-          <input
-          className="ClassinputConnection"
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="boxInput">
-          <label>Mot de passe</label>
-          <input
-            className="ClassinputConnection"
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        {/* Si tu utilises le rôle, ajoute un select ou input ici */}
-
-        <div>
-          <input type="submit" value="Se connecter" className="InputSubmitConnection" />
-        </div>
-        </div>
-      </form>
+     <FromSing submit={LoginSubmit} tapinput={tapinput} title="connection"/>
 
     </div>
   )
