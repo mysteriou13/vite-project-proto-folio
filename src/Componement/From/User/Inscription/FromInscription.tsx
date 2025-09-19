@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../../Store/hook";
 import Input from "../../../input/Input";
+import FromSing from "../../FromSing/FromSing";
 import { useInscriptionUserMutation } from "../../../../Store/api/ApiUser";
 import "./FromInscription.css";
+import { inputInterface } from "../../../../Interface/InterfaceInput";
 
 export default function FormInscription() {
   const dispatch = useAppDispatch();
@@ -22,7 +24,7 @@ export default function FormInscription() {
   };
 
   // ✅ tableau de config pour générer les inputs
-  const tapinput = [
+  let tapinput:inputInterface[] = [
     {
       label: "Nom",
       name: "name",
@@ -41,30 +43,7 @@ export default function FormInscription() {
 
   return (
     <div>
-      <form className="fromConnection" onSubmit={inscription}>
-        <div className="divMainConnection">
-          <h1>Inscription</h1>
-
-          {tapinput.map((field, index) => (
-            <Input
-              key={index}
-              label={field.label}
-              name={field.name}
-              type={field.type}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          ))}
-
-          <div>
-            <input
-              type="submit"
-              value="Envoyer"
-              className="InputSubmitConnection"
-            />
-          </div>
-        </div>
-      </form>
+  <FromSing  submit={inscription}tapinput={tapinput} title="Inscription"/>
     </div>
   );
 }
