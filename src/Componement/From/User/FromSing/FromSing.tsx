@@ -16,18 +16,6 @@ export default function FromSing({ submit, tapinput, title }: FromSingProps ) {
               <h1>{title}</h1>
     
               {tapinput.map((field, index) => (
-              field.type === "textarea" ?(
-      <div key={index} className="boxInput">
-          <label>{field.label}</label>
-         <textarea
-           name={field.name}
-           value={field.value}
-           onChange={field.onChange as any} // caster pour TS
-           required
-          />
-      </div>
-              
-              ):(
                 <Input
                   key={index}
                   label={field.label}
@@ -36,7 +24,6 @@ export default function FromSing({ submit, tapinput, title }: FromSingProps ) {
                   value={field.value}
                   onChange={field.onChange}
                 />
-              )
               ))}
     
               <div>

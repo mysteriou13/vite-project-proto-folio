@@ -1,0 +1,46 @@
+import { useState } from "react";
+import FromSing from "../../Componement/From/FromSing/FromSing";
+import { inputInterface } from "../../Interface/InterfaceInput";
+import "./Contact.css";
+
+export default function Contact() {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+
+  let tapinput: inputInterface[] = [
+    {
+      label: "Nom",
+      name: "name",
+      type: "text",
+      value: name,
+      onChange: (e) => setName(e.target.value),
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "email",
+      value: email,
+      onChange: (e) => setEmail(e.target.value),
+    },
+    // Pour un textarea, on pourrait créer un type spécial
+    {
+      label: "Message",
+      name: "message",
+      type: "textarea",
+      value: message,
+   onChange: (e) => setMessage(e.target.value),
+    },
+  ];
+
+  const sendcontact = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log({ name, email, message });
+  };
+
+  return (
+    <div className="main_input_Contact">
+      <FromSing submit={sendcontact} tapinput={tapinput} title={"Contact"} />
+    </div>
+  );
+}
