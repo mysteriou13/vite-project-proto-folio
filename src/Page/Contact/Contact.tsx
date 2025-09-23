@@ -1,13 +1,14 @@
 import { useState } from "react";
 import FromSing from "../../Componement/From/FromSing/FromSing";
 import { inputInterface } from "../../Interface/InterfaceInput";
+import { useContactMutation } from "../../Store/api/ApiContact";
 import "./Contact.css";
 
 export default function Contact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-
+  const [Contact,isLoading] = useContactMutation();
   let tapinput: inputInterface[] = [
     {
       label: "Nom",
@@ -35,7 +36,7 @@ export default function Contact() {
 
   const sendcontact = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ name, email, message });
+Contact({ name, email, message });
   };
 
   return (
