@@ -1,13 +1,21 @@
+export interface LoginRequest {
+  name: string;
+  password: string;
+}
 
-export type loginData = {
-name:string,
-passsword:string
+export interface LoginResponse {
+  connection: boolean;
+  role: string;
 }
 
 
-export type loginResponse = {
+
+export interface  InscriptionResponse{
+  message:string
+}
+
+export interface InscriptionPayload {
   name:string,
-  password:string,
-  token:string
-   role:string
+  password:string
+  role:string
 }

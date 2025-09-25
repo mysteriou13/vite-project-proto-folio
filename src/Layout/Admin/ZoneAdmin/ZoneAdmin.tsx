@@ -1,16 +1,13 @@
 
 import { Outlet } from 'react-router'
 import TitlePage from '../../../Componement/TitlePage/TitlePage'
-
 import NavMenuAdmin from '../../../Componement/ZoneAdmin/NavMenuAdmin/NavMenuAdmin'
 import FormConnection from '../../../Componement/From/User/Connection/FromConnection'
-import { useSelector } from 'react-redux'
-import type { RootState } from '../../../Store/store'
+import { useAuth } from '../../../Store/Selector/SelectorUser'
 import './ZoneAdmin.css'
 export default function ZoneAdmin() {
 
-  const role = useSelector((state: RootState)=> state.login.role)
-
+  const {role} = useAuth();
   return (
     <div  className = "main_layout">
   

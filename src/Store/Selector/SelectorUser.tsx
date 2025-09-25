@@ -1,5 +1,5 @@
 // src/app/hooks.ts ou src/hooks/useAuth.ts
-import { useAppSelector } from '../hook'
+import { useAppSelector } from '../Hook/hook'
 
 export function useAuth() {
   const {login ,role}= useAppSelector(state => state.login)

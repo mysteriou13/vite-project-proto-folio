@@ -1,57 +1,57 @@
 import { useState } from "react";
-import {useAppDispatch} from '../../../../Store/hook'
-import { setLogin,setRoleUser } from "../../../../Store/Slice/LoginSlice";
+import { useAppDispatch } from "../../../../Store/Hook/hook";
+import { setLogin, setRoleUser } from "../../../../Store/Slice/LoginSlice";
 import { useLoginUserMutation } from "../../../../Store/api/ApiUser";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromSing from "../../FromSing/FromSing";
+import { LoginResponse } from "../../../../Interface/interfaceUse";
 
 import "./FromConnection.css";
 
 export default function FormConnection() {
- const [name, setName] = useState<string>("")
-const [password, setPassword] = useState<string>("")
-const [role, _setRole] = useState<string>("admin")
-const [loginUser, {isLoading,error}] = useLoginUserMutation();
-const dispatch = useAppDispatch();
-const LoginSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-  try {
-   const result = await loginUser({ name, password }).unwrap()
-   
-   if(result){
-    dispatch(setLogin(true))
-    dispatch(setRoleUser(role))
-       
-   }
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [loginUser, { isLoading }] = useLoginUserMutation();
+  const dispatch = useAppDispatch();
 
-  }catch(error){
+  const LoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const result: LoginResponse = await loginUser({ name, password }).unwrap();
+      
+      if (result.connection) {
+        dispatch(setLogin(true));
+        dispatch(setRoleUser(result.role));
+      }
+    } catch (error) {
+      console.error("Erreur de connexion", error);
+    }
+  };
 
-  }
-
-}
-
-  let tapinput:inputInterface[] = [
+  const tapinput: inputInterface[] = [
     {
       label: "Nom",
       name: "name",
       type: "text",
       value: name,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value),
+      onChange: (e) => setName(e.target.value),
     },
     {
       label: "Mot de passe",
       name: "password",
       type: "password",
       value: password,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+      onChange: (e) => setPassword(e.target.value),
     },
   ];
 
   return (
     <div>
-
-     <FromSing submit={LoginSubmit} tapinput={tapinput} title="connection"/>
-
+      {!isLoading ? (
+        <FromSing submit={LoginSubmit} tapinput={tapinput} title="connection" />
+      ) : (
+        <div>...chargement</div>
+      )}
     </div>
-  )
+  );
 }

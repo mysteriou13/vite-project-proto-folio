@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import loginReducer from './Slice/LoginSlice';
 import navMenuSlice from './Slice/NavSlice';
 import  ApiNavMenu   from './api/ApiNavMenu'; 
-import ApiUser from './api/ApiUser';
+import { ApiUser } from './api/ApiUser';
 
 export const store = configureStore({
   reducer: {
@@ -14,3 +14,8 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(ApiNavMenu.middleware).concat(ApiUser.middleware)
 });
+
+
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch

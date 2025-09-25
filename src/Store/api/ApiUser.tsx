@@ -1,22 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { loginData,loginResponse } from '../../Interface/interfaceUse';
-
-interface  InscriptionResponse{
-  message:string
-}
-
-interface InscriptionPayload {
-  name:string,
-  password:string
-  role:string
-}
+import  { LoginRequest,LoginResponse,InscriptionResponse,InscriptionPayload } from '../../Interface/interfaceUse';
 
 
 export const ApiUser= createApi({
   reducerPath: 'apiUser',
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder)=> ({
-    loginUser: builder.mutation<loginData,Partial<loginResponse> >({
+    loginUser: builder.mutation<LoginResponse,LoginRequest> ({
         query:(data) => ({
             url:'/user/login',
              method:"POST",
