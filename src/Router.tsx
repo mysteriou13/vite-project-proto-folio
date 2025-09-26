@@ -6,8 +6,8 @@ import ZoneAdmin from "./Layout/Admin/ZoneAdmin/ZoneAdmin.tsx";
 import Home from './Page/Home/Home.jsx';
 import Contact from './Page/Contact/Contact.jsx'; // Exemple de page
 import Project from './Page/Project/Project.jsx'; // Exemple de page
-import Inscription from "./Page/Inscription/Inscription.tsx";
-import Connection from "./Page/Connection/Connection.tsx";
+import FormInscription from "./Componement/From/User/Inscription/FromInscription.tsx";
+import FormConnection from "./Componement/From/User/Connection/FromConnection.tsx";
 import AddNavMenu from "./Page/PageAdmin/AddNavMenu/AddNavMenu.tsx";
 import AdminNavMenu from "./Layout/Admin/LayoutAdminNavMenu/AdminNavMenu.tsx";
 export default function Router() {
@@ -20,13 +20,13 @@ export default function Router() {
         <Route path="/" element={<DefaultLayout/>}>
           <Route index element={<Home />} /> {/* Page par défaut */}
           <Route path="project" element={<Project />} /> {/* Page About */}
-          <Route path="contact" element={<Contact />} /> {/* Page Contact */}
+          <Route path="contact" element={<Contact />} /> 
         </Route>
 
         <Route path  = "/" element = {<DisconnectLayout/>}>
 
-        <Route path ="inscription" element = {<Inscription/>}/>
-        <Route path = "connection" element = {<Connection/>}/>
+        <Route path ="inscription" element = {<FormInscription/>}/>
+        <Route path = "connection" element = {<FormConnection/>}/>
 
         </Route>
 
