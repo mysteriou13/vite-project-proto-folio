@@ -1,7 +1,7 @@
 import { FormEventHandler } from "react";
 import Input from "../../input/Input";
 import { inputInterface } from "../../../Interface/InterfaceInput";
-
+import TextArea from "../TextArea/TextArea";
 interface FromSingProps {
   submit: FormEventHandler<HTMLFormElement>;
   tapinput: inputInterface[];
@@ -19,12 +19,7 @@ export default function FromSing({ submit, tapinput, title }: FromSingProps ) {
               field.type === "textarea" ?(
       <div key={index} className="boxInput">
           <label>{field.label}</label>
-         <textarea
-           name={field.name}
-           value={field.value}
-           onChange={field.onChange as any} // caster pour TS
-           required
-          />
+          <TextArea name={field.name} value={field.value} onChange={field.onChange as any}/>
       </div>
               
               ):(
