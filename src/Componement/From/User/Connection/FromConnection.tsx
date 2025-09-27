@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useAppDispatch } from "../../../../Store/Hook/hook";
 import { setLogin, setRoleUser } from "../../../../Store/Slice/LoginSlice";
 import { useLoginUserMutation } from "../../../../Store/api/ApiUser";
@@ -47,11 +47,7 @@ export default function FormConnection() {
 
   return (
     <div>
-      {!isLoading ? (
-        <FromSing submit={LoginSubmit} tapinput={tapinput} title="connection" />
-      ) : (
-        <div>...chargement</div>
-      )}
+        <FromSing  tapinput={tapinput} title="connection" isloading={isLoading} submit={LoginSubmit} />
     </div>
   );
 }
