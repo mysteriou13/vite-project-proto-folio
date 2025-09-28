@@ -47,7 +47,7 @@ export default function FormConnection() {
 
   return (
     <div>
-        <FromSing  tapinput={tapinput} title="connection" isloading={isLoading} submit={LoginSubmit} />
+        <FromSing  tapinput={tapinput} title="connection" submit={LoginSubmit} />
     </div>
   );
 }

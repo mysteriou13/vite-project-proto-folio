@@ -7,10 +7,10 @@ interface FromSingProps {
   submit:FormEventHandler<HTMLFormElement>
   tapinput: inputInterface[];
   title: string;
-  isloading: boolean;
+  
 }
 
-export default function FromSing({ submit, tapinput, title, isloading }: FromSingProps) {
+export default function FromSing({ submit, tapinput, title }: FromSingProps) {
   const [showSpinner, setShowSpinner] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
