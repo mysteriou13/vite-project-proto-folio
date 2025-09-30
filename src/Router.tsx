@@ -4,7 +4,7 @@ import DefaultLayout from "./Layout/Default/Default.jsx";
 import DisconnectLayout from "./Layout/Disconnect/DisconnectionLayout.tsx";
 import ZoneAdmin from "./Layout/Admin/ZoneAdmin/ZoneAdmin.tsx";
 import Home from './Page/Home/Home.jsx';
-import Contact from './Page/Contact/Contact.jsx'; // Exemple de page
+import FromContact from "./Componement/From/Contact/FromContact.tsx";
 import Project from './Page/Project/Project.jsx'; // Exemple de page
 import FormInscription from "./Componement/From/User/Inscription/FromInscription.tsx";
 import FormConnection from "./Componement/From/User/Connection/FromConnection.tsx";
@@ -20,7 +20,7 @@ export default function Router() {
         <Route path="/" element={<DefaultLayout/>}>
           <Route index element={<Home />} /> {/* Page par défaut */}
           <Route path="project" element={<Project />} /> {/* Page About */}
-          <Route path="contact" element={<Contact />} /> 
+          <Route path="contact" element={<FromContact />} /> 
         </Route>
 
         <Route path  = "/" element = {<DisconnectLayout/>}>

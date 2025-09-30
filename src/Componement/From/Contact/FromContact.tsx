@@ -1,14 +1,14 @@
 import { useState } from "react";
-import FromSing from "../../Componement/From/FromSing/FromSing";
-import { inputInterface } from "../../Interface/InterfaceInput";
-import { useContactMutation } from "../../Store/api/ApiContact";
+import FromSing from "../FromSing/FromSing";
+import { inputInterface } from "../../../Interface/InterfaceInput";
+import { useContactMutation } from "../../../Store/api/ApiContact";
 import "./Contact.css";
 
-export default function Contact() {
+export default function FromContact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [Contact,isLoading] = useContactMutation();
+  const [Contact] = useContactMutation();
   let tapinput: inputInterface[] = [
     {
       label: "Nom",
