@@ -1,22 +1,22 @@
 import { useState } from "react";
-import  "./FromAddNavMenu.css"
+import "./FromAddNavMenu.css";
 import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu";
 import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
+import FromSing from "../../FromSing/FromSing";
+import { inputInterface } from "../../../../Interface/InterfaceInput";
 
 export default function FormAddNavMenu() {
+  const [addNavLink] = useAddNavLinkMutation();
 
-const [addNavLink, { isLoading }] = useAddNavLinkMutation();
-
-  // useState pour gérer le formulaire
   const [dataform, setDataform] = useState<NavDataLink>({
     name: "",
     address: "",
     typelink: "default",
   });
 
-  // Gérer les changements de champs
+  // 🔧 Correction ici : accepte input + textarea
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setDataform({
@@ -25,18 +25,16 @@ const [addNavLink, { isLoading }] = useAddNavLinkMutation();
     });
   };
 
-  // Gérer la soumission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validation basique
     if (!dataform.name || !dataform.address) {
       console.log("⚠️ Remplir tous les champs obligatoires !");
       return;
     }
 
-    // Envoi au backend via Redux Thunk
-     await addNavLink(dataform).unwrap();
+    await addNavLink(dataform).unwrap();
+
     // Reset du formulaire
     setDataform({
       name: "",
@@ -45,91 +43,43 @@ const [addNavLink, { isLoading }] = useAddNavLinkMutation();
     });
   };
 
+  // Tableau dynamique pour tous les champs
+  const tapinput: inputInterface[] = [
+    {
+      label: "Nom du lien",
+      name: "name",
+      type: "text",
+      value: dataform.name,
+      onChange: handleChange,
+    },
+    {
+      label: "Adresse du lien",
+      name: "address",
+      type: "text",
+      value: dataform.address,
+      onChange: handleChange,
+    },
+    {
+      label: "Type du lien",
+      name: "typelink",
+      type: "radio",
+      value: dataform.typelink,
+      onChange: handleChange,
+      options: [
+        { label: "Défaut", value: "default" },
+        { label: "User", value: "user" },
+        { label: "Admin", value: "admin" },
+        { label: "Visible User connecté", value: "visibleuserconnecter" },
+        { label: "Invisible User", value: "invisibleuserconnect" },
+        { label: "Visible Admin connecté", value: "visibleadminconnect" },
+      ],
+    },
+  ];
+
   return (
     <div>
-    <h1>Ajouter un lien au menu de navigation</h1>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Nom du lien"
-        value={dataform.name}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="address"
-        placeholder="Adresse du lien"
-        value={dataform.address}
-        onChange={handleChange}
-      />
-
-      <div className="divinputRadionAddNavMenu">
-        <label>
-          Défaut
-          <input
-            type="radio"
-            name="typelink"
-            value="default"
-            checked={dataform.typelink === "default"}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          User
-          <input
-            type="radio"
-            name="typelink"
-            value="user"
-            checked={dataform.typelink === "user"}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Admin
-          <input
-            type="radio"
-            name="typelink"
-            value="admin"
-            checked={dataform.typelink === "admin"}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Visible User connecté
-          <input
-            type="radio"
-            name="typelink"
-            value="visibleuserconnecter"
-            checked={dataform.typelink === "visibleuserconnecter"}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Invisible User
-          <input
-            type="radio"
-            name="typelink"
-            value="invisibleuserconnect"
-            checked={dataform.typelink === "invisibleuserconnect"}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Visible Admin connecté
-          <input
-            type="radio"
-            name="typelink"
-            value="visibleadminconnect"
-            checked={dataform.typelink === "visibleadminconnect"}
-            onChange={handleChange}
-          />
-        </label>
-      </div>
-
-
-      <button type="submit"> Ajouter</button>
-    </form>
+      <h1>Ajouter un lien au menu de navigation</h1>
+      <FromSing submit={handleSubmit} tapinput={tapinput} title={""} />
     </div>
   );
 }
