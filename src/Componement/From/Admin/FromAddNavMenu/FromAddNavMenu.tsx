@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./FromAddNavMenu.css";
 import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu";
 import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
-import FromSing from "../../FromSing/FromSing";
+import FromBase from "../../FromBase/FromBase";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 
 export default function FormAddNavMenu() {
@@ -14,7 +14,7 @@ export default function FormAddNavMenu() {
     typelink: "default",
   });
 
-  // 🔧 Correction ici : accepte input + textarea
+  //  Correction ici : accepte input + textarea
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -79,7 +79,7 @@ export default function FormAddNavMenu() {
   return (
     <div>
       <h1>Ajouter un lien au menu de navigation</h1>
-      <FromSing submit={handleSubmit} tapinput={tapinput} title={""} />
+      <FromBase submit={handleSubmit} tapinput={tapinput} title={""} />
     </div>
   );
 }

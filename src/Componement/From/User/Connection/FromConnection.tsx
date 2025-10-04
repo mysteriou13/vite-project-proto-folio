@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../../../Store/Hook/hook";
 import { setLogin, setRoleUser } from "../../../../Store/Slice/LoginSlice";
 import { useLoginUserMutation } from "../../../../Store/api/ApiUser";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
-import FromSing from "../../FromSing/FromSing";
+import FromBase from "../../FromBase/FromBase";
 import { LoginResponse } from "../../../../Interface/interfaceUse";
 
 import "./FromConnection.css";
@@ -14,7 +14,7 @@ export default function FormConnection() {
   const [loginUser, { isLoading }] = useLoginUserMutation();
   const dispatch = useAppDispatch();
 
-  const LoginSubmit = async (e: React.FormEvent) => {
+  const LoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const result: LoginResponse = await loginUser({ name, password }).unwrap();
@@ -47,7 +47,7 @@ export default function FormConnection() {
 
   return (
     <div>
-        <FromSing  tapinput={tapinput} title="connection" submit={LoginSubmit} />
+        <FromBase  tapinput={tapinput} title="connection" submit={LoginSubmit} />
     </div>
   );
 }

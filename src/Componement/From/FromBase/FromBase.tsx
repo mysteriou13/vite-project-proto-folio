@@ -3,14 +3,14 @@ import { inputInterface } from "../../../Interface/InterfaceInput";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import ListeInput from "../ListeInput/ListeInput";
 
-interface FromSingProps {
+interface FromBaseProps {
   submit:FormEventHandler<HTMLFormElement>
   tapinput: inputInterface[];
   title: string;
   
 }
 
-export default function FromSing({ submit, tapinput, title }: FromSingProps) {
+export default function FromBase({ submit, tapinput, title }: FromBaseProps) {
   const [showSpinner, setShowSpinner] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

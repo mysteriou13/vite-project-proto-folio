@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FromSing from "../../FromSing/FromSing";
 import { useInscriptionUserMutation } from "../../../../Store/api/ApiUser";
 import "./FromInscription.css";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
+import FromBase from "../../FromBase/FromBase";
 
 export default function FormInscription() {
   
@@ -11,7 +11,7 @@ export default function FormInscription() {
   const [role] = useState<string>("user");
   const [inscriptionUser] = useInscriptionUserMutation();
 
-  const inscription = async (e: React.FormEvent) => {
+  const inscription = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = await inscriptionUser({ name, password, role });
@@ -27,20 +27,20 @@ export default function FormInscription() {
       name: "name",
       type: "text",
       value: name,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value),
+      onChange:  (e) =>  setName(e.target.value),
     },
     {
       label: "Mot de passe",
       name: "password",
       type: "password",
       value: password,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+      onChange:  (e) =>  setPassword(e.target.value),
     },
   ];
 
   return (
     <div>
-  <FromSing  submit={inscription}tapinput={tapinput} title="Inscription"/>
+  <FromBase  submit={inscription}tapinput={tapinput} title="Inscription"/>
     </div>
   );
 }

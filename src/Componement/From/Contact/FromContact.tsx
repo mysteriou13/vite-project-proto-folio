@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-import FromSing from "../FromSing/FromSing";
+import FromSing from "../FromBase/FromBase";
 import { inputInterface } from "../../../Interface/InterfaceInput";
 import { useContactMutation } from "../../../Store/api/ApiContact";
 import "./FromContact.css";
