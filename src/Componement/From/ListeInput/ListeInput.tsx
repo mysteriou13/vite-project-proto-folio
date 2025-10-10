@@ -1,13 +1,13 @@
 import TextArea from "../TextArea/TextArea"
-import Input from "../../input/Input"
+import Input from "../input/Input"
 import InputRadio from "../InputRadio/InputRadio"
 import { inputInterface } from "../../../Interface/InterfaceInput"
-
+ import "./ListeInput.css";
 interface ListeInputProps {
   tapinput: inputInterface[]
 }
 
-/* ListeInput qui génère dynamiquement les bons champs */
+/* ListeInput of filed*/
 export default function ListeInput({ tapinput }: ListeInputProps) {
   return (
     <div>
@@ -28,12 +28,17 @@ export default function ListeInput({ tapinput }: ListeInputProps) {
           }else if(field.type === "radio" && field.options){
           
            return (
-            <div key={index} className="boxInput">
-              <label>{field.label}</label>
+            <div key={index} className="ListInputRadio">
+     
               {field.options.map((option,i)=>(
                 
-          <InputRadio label={option.label} name={option.name} value={field.value} checked={false} onChange={field.onChange} />
-
+          <InputRadio 
+          key ={i}
+          label={option.label} 
+          name={field.name} 
+          value={field.value} 
+          onChange={field.onChange} 
+          selectedValue={field.value} />
                  ))}
             </div>
           )

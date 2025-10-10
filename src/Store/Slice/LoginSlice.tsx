@@ -5,6 +5,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 interface LoginState {
   login: boolean
   role: string
+  token:string,
   loading: boolean
   error: string | null
 }
@@ -12,6 +13,7 @@ interface LoginState {
 const initialState: LoginState = {
   login: false,
   role: '',
+  token:'',
   loading: false,
   error: null
 }
@@ -23,6 +25,11 @@ const loginSlice = createSlice({
     setLogin(state, action:PayloadAction<boolean>) {
       state.login = action.payload
     },
+
+    setToken(state, action:PayloadAction<string>){
+    state.token = action.payload
+    },
+
     setRoleUser(state, action:PayloadAction<string>) {
       state.role = action.payload
     }
@@ -30,5 +37,5 @@ const loginSlice = createSlice({
 
 })
 
-export const { setLogin, setRoleUser } = loginSlice.actions
+export const { setLogin, setRoleUser,setToken } = loginSlice.actions
 export default loginSlice.reducer

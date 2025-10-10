@@ -1,22 +1,22 @@
 
-/*link nav */
- export type LinkNav = {
-    _id?: string;
+export interface baselink  {   
     name: string;
     address: string;
+}
+/*link nav */
+ export interface LinkNav extends baselink {
+   
     typelink: string;
   };
 
-  export type ItemsState = {
+  export interface ItemsState  {
     data: LinkNav[];
   };
 
 
 // add nav navLink
-export type NavDataLink = {
-  _id?: string;
-  name: string;
-  address: string;
+export interface NavDataLink extends baselink {
+
   typelink:
     | "default"
     | "user"
@@ -24,8 +24,13 @@ export type NavDataLink = {
     | "visibleuserconnecter"
     | "invisibleuserconnect"
     | "visibleadminconnect";
-  __v?: number; // optionnel, car tu ne l’utilises pas dans ton code
+
 };
+
+export interface AddNavLinkArgs {
+  dataform: NavDataLink  // le lien à ajouter, peut être partiel
+  token: string                  // token d'authentification
+}
 
 // Réponse du backend pour lire tous les navLinks
 // Si le backend renvoie seulement un tableau, on peut juste faire :

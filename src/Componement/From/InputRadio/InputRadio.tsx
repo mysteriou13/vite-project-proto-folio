@@ -1,22 +1,24 @@
-
-interface inputRadio {
-   label:string,
-  name: string
-  value: string
-  checked: boolean
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+interface InputRadioProps {
+  label: string;
+  name: string;
+  value: string;
+  selectedValue: string; // valeur actuelle du state
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function InputRadio({label,name,value,checked,onChange}:inputRadio) {
+export default function InputRadio({ label, name, value, selectedValue, onChange }: InputRadioProps) {
   return (
     <div>
-         {label}<input
-      type="radio"
-      name={name}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-                    />
+      <label>
+        {label}
+        <input
+          type="radio"
+          name={name}
+          value={value}
+          checked={value === selectedValue} // ✅ checked dynamique
+          onChange={onChange}
+        />
+      </label>
     </div>
-  )
+  );
 }

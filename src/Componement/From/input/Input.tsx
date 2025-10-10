@@ -1,5 +1,5 @@
 import "./input.css";
-import type { inputInterface } from "../../Interface/InterfaceInput";
+import type { inputInterface } from "../../../Interface/InterfaceInput";
 
 export default function Input({ label, type, name, value, onChange }: inputInterface) {
   return (

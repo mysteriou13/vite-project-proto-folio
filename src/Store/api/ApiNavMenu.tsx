@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { NavDataLink } from '../../Interface/InterfaceNavmenu';
+import type { NavDataLink,AddNavLinkArgs } from '../../Interface/InterfaceNavmenu';
 
 export const ApiNavMenu= createApi({
   reducerPath: 'api',
@@ -13,14 +13,19 @@ export const ApiNavMenu= createApi({
     }),
 
     // add nav link
-    addNavLink: builder.mutation<NavDataLink, Partial<NavDataLink>>({
-      query: (newLink) => ({
-        url: '/navmenu/addnavmenu',
-        method: 'POST',
-        body: newLink,
-      }),
-      invalidatesTags: ['NavMenu'], // re-fetch automatique après ajout
-    }),
+addNavLink: builder.mutation<NavDataLink, AddNavLinkArgs>({
+  query: ({ dataform, token }) => ({
+    url: '/navmenu/addnavmenu',
+    method: 'POST',
+    body: dataform,
+    headers: {
+      Authorization: `Bearer ${token}`, // 👈 ajouter 'Bearer '
+      'Content-Type': 'application/json',
+    },
+  }),
+  invalidatesTags: ['NavMenu'],
+}),
+
   }),
 });
 

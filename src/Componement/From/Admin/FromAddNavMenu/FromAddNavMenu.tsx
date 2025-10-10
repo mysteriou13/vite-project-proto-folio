@@ -4,14 +4,17 @@ import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu";
 import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
 import FromBase from "../../FromBase/FromBase";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
+import { useAuth } from "../../../../Store/Selector/SelectorUser";
 
 export default function FormAddNavMenu() {
   const [addNavLink] = useAddNavLinkMutation();
+    const { token } = useAuth();
 
   const [dataform, setDataform] = useState<NavDataLink>({
     name: "",
     address: "",
     typelink: "default",
+   
   });
 
   //  Correction ici : accepte input + textarea
@@ -32,8 +35,8 @@ export default function FormAddNavMenu() {
       console.log("⚠️ Remplir tous les champs obligatoires !");
       return;
     }
-
-    await addNavLink(dataform).unwrap();
+  
+    await addNavLink({ dataform, token }).unwrap()
 
     // Reset du formulaire
     setDataform({
@@ -78,8 +81,7 @@ export default function FormAddNavMenu() {
 
   return (
     <div>
-      <h1>Ajouter un lien au menu de navigation</h1>
-      <FromBase submit={handleSubmit} tapinput={tapinput} title={""} />
+      <FromBase submit={handleSubmit} tapinput={tapinput} title={"Ajouter un lien au menu de navigation"} />
     </div>
   );
 }

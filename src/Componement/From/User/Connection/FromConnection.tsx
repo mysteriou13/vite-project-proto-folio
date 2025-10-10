@@ -1,6 +1,6 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useAppDispatch } from "../../../../Store/Hook/hook";
-import { setLogin, setRoleUser } from "../../../../Store/Slice/LoginSlice";
+import { setLogin,setToken,setRoleUser } from "../../../../Store/Slice/LoginSlice";
 import { useLoginUserMutation } from "../../../../Store/api/ApiUser";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromBase from "../../FromBase/FromBase";
@@ -11,17 +11,20 @@ import "./FromConnection.css";
 export default function FormConnection() {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [loginUser, { isLoading }] = useLoginUserMutation();
+  const [loginUser] = useLoginUserMutation();
   const dispatch = useAppDispatch();
 
   const LoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const result: LoginResponse = await loginUser({ name, password }).unwrap();
+
+      console.log("result",result);
       
       if (result.connection) {
         dispatch(setLogin(true));
         dispatch(setRoleUser(result.role));
+         dispatch(setToken(result.token));
       }
     } catch (error) {
       console.error("Erreur de connexion", error);
