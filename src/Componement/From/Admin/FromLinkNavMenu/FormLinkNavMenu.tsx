@@ -1,13 +1,14 @@
 import { useState } from "react";
-import "./FromAddNavMenu.css";
-import { useAddNavLinkMutation } from "../../../../Store/api/ApiNavMenu";
 import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
 import FromBase from "../../FromBase/FromBase";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import { useAuth } from "../../../../Store/Selector/SelectorUser";
-
-export default function FormAddNavMenu() {
-  const [addNavLink] = useAddNavLinkMutation();
+import "./FromLinkNavMenu.css"
+interface FormAddNavMenuProps {
+    NavLink: (args: { dataform: NavDataLink; token: string }) => Promise<any>
+   title:string,
+  }
+export default function FormLinkNavMenu({NavLink,title}:FormAddNavMenuProps) {
     const { token } = useAuth();
 
   const [dataform, setDataform] = useState<NavDataLink>({
@@ -36,8 +37,9 @@ export default function FormAddNavMenu() {
       return;
     }
   
-    await addNavLink({ dataform, token }).unwrap()
-
+   
+    await NavLink({ dataform, token })
+   
     // Reset du formulaire
     setDataform({
       name: "",
@@ -81,7 +83,7 @@ export default function FormAddNavMenu() {
 
   return (
     <div>
-      <FromBase submit={handleSubmit} tapinput={tapinput} title={"Ajouter un lien au menu de navigation"} />
+      <FromBase submit={handleSubmit} tapinput={tapinput} title={title} />
     </div>
   );
 }

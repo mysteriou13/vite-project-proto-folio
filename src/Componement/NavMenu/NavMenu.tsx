@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../../Store/Selector/SelectorUser';
 import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu';
 import LinkNavMenu from '../LinkNavMenu/LinkNavMenu';
-import type { LinkNav } from '../../Interface/InterfaceNavmenu';
+import  {LinkNav}  from '../../Interface/InterfaceNavmenu';
 import './NavMenu.css';
 
 export default function NavMenu() {
@@ -45,7 +45,7 @@ useEffect(() => {
         <ul className="ul_box">
           {filtreitem.map((link) => (
             <li key={link._id}>
-              <LinkNavMenu data={link} />
+              <LinkNavMenu name={link.name} address={link.address} />
             </li>
           ))}
         </ul>

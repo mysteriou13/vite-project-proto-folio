@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import LinkAdmin from "../../../Componement/ZoneAdmin/LinkAdmin/LinkAdmin";
+import ListeNavMenuAdmin from "../../../Componement/ZoneAdmin/ListeNavMenuAdmin/ListeNavMenuAdmin";
 export default function AdminNavMenu() {
   
   return (
@@ -12,8 +13,11 @@ export default function AdminNavMenu() {
     <div> 
     <h1>
       <LinkAdmin link="/admin/addNavMenu" name=" ajouter un lien au menu de navigation"/>
+
     </h1>
     </div>
+
+<div><ListeNavMenuAdmin/></div>
 
     <div>
     <Outlet/>

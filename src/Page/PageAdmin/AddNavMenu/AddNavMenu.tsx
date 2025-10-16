@@ -1,9 +1,12 @@
 
-import FromAddNavMenu from "../../../Componement/From/Admin/FromAddNavMenu/FromAddNavMenu"
+import FormLinkNavMenu from "../../../Componement/From/Admin/FromLinkNavMenu/FormLinkNavMenu";
+import { useAddNavLinkMutation } from "../../../Store/api/ApiNavMenu";
+
 export default function AddNavMenu() {
+  const [addNavLink] = useAddNavLinkMutation();
   return (
     <div>
-  <FromAddNavMenu/>
+  <FormLinkNavMenu NavLink={addNavLink} title={"Ajouter lien au menu de navigation"}/>
     </div>
   )
 }
