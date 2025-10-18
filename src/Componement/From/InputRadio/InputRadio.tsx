@@ -1,9 +1,9 @@
 interface InputRadioProps {
   label: string;
   name: string;
-  value: string;
-  selectedValue: string; // valeur actuelle du state
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  selectedValue?: string; // valeur actuelle du state
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function InputRadio({ label, name, value, selectedValue, onChange }: InputRadioProps) {
@@ -11,6 +11,7 @@ export default function InputRadio({ label, name, value, selectedValue, onChange
     <div>
       <label>
         {label}
+        </label>
         <input
           type="radio"
           name={name}
@@ -18,7 +19,7 @@ export default function InputRadio({ label, name, value, selectedValue, onChange
           checked={value === selectedValue} // ✅ checked dynamique
           onChange={onChange}
         />
-      </label>
+      
     </div>
   );
 }

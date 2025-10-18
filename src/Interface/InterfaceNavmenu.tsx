@@ -17,13 +17,7 @@ export interface baselink  {
 // add nav navLink
 export interface NavDataLink extends baselink {
 _id?:string,
-  typelink:
-    | "default"
-    | "user"
-    | "admin"
-    | "visibleuserconnecter"
-    | "invisibleuserconnect"
-    | "visibleadminconnect";
+  typelink:any
 
 };
 

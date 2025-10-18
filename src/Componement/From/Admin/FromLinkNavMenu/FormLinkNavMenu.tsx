@@ -10,27 +10,34 @@ interface FormAddNavMenuProps {
   }
 export default function FormLinkNavMenu({NavLink,title}:FormAddNavMenuProps) {
     const { token } = useAuth();
+  
 
-  const [dataform, setDataform] = useState<NavDataLink>({
-    name: "",
-    address: "",
-    typelink: "default",
-   
-  });
+const [dataform, setDataform] = useState<NavDataLink>({
+  name: "",
+  address: "",
+  typelink: "default", // ✅ valeur initiale
+});
 
   //  Correction ici : accepte input + textarea
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    console.log("valueinput ",e.target);
     setDataform({
       ...dataform,
       [name]: value,
     });
   };
 
+const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const value = e.target.value as NavDataLink["typelink"];
+  setDataform((prev) => ({
+    ...prev,
+    typelink: value, // ✅ on met à jour directement dans dataform
+  }));
+};
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
     if (!dataform.name || !dataform.address) {
       console.log("⚠️ Remplir tous les champs obligatoires !");
@@ -44,7 +51,7 @@ export default function FormLinkNavMenu({NavLink,title}:FormAddNavMenuProps) {
     setDataform({
       name: "",
       address: "",
-      typelink: "default",
+      typelink: "",
     });
   };
 
@@ -64,21 +71,22 @@ export default function FormLinkNavMenu({NavLink,title}:FormAddNavMenuProps) {
       value: dataform.address,
       onChange: handleChange,
     },
-    {
-      label: "Type du lien",
-      name: "typelink",
-      type: "radio",
-      value: dataform.typelink,
-      onChange: handleChange,
-      options: [
-        { label: "Défaut", value: "default" },
-        { label: "User", value: "user" },
-        { label: "Admin", value: "admin" },
-        { label: "Visible User connecté", value: "visibleuserconnecter" },
-        { label: "Invisible User", value: "invisibleuserconnect" },
-        { label: "Visible Admin connecté", value: "visibleadminconnect" },
-      ],
-    },
+{
+  label: "Type du lien",
+  name: "typelink",
+  type: "radio",
+  value: dataform.typelink,  // ✅ value = state
+  onChange: handleRadioChange, // ✅ pas besoin de cast
+  options: [
+    { label: "Défaut", value: "default" },
+    { label: "User", value: "user" },
+    { label: "Admin", value: "admin" },
+    { label: "Visible User connecté", value: "visibleuserconnecter" },
+    { label: "Invisible User", value: "invisibleuserconnect" },
+    { label: "Visible Admin connecté", value: "visibleadminconnect" },
+  ],
+}
+,
   ];
 
   return (
