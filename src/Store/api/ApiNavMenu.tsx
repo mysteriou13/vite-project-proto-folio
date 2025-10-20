@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { NavDataLink,AddNavLinkArgs } from '../../Interface/InterfaceNavmenu';
-import { UpdateNavMenu } from '../../../../Back-porto-folio-vite-project/Controller/ControllerNavmenu';
+
+import  { NavDataLink,AddNavLinkArgs } from '../../Interface/InterfaceNavmenu';
 
 export const ApiNavMenu= createApi({
   reducerPath: 'api',

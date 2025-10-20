@@ -3,7 +3,8 @@ import LinkNavMenu from '../../LinkNavMenu/LinkNavMenu'
 import FormLinkNavMenu from '../../From/Admin/FromLinkNavMenu/FormLinkNavMenu'
 import { useUpdateNavLinkMutation } from '../../../Store/api/ApiNavMenu'
 import { baselink } from '../../../Interface/InterfaceNavmenu'
-export default function DivNavlinkMenu({name,address}:baselink) {
+
+export default function DivNavlinkMenu({name,address,typelink}:baselink) {
     
      const [UpdataNavLink] = useUpdateNavLinkMutation();
        const [visible, setVisible] = useState<boolean>(false)
@@ -23,7 +24,8 @@ export default function DivNavlinkMenu({name,address}:baselink) {
     <div>
 <div>
   <div>
-  <LinkNavMenu name={name} address={address}/>
+    
+  <LinkNavMenu name={name} address={address} typelink={typelink}/>
   </div>
   <div>
   <input type = "button" value = "modifier" onClick={displayFromUpdate}/>
@@ -32,7 +34,7 @@ export default function DivNavlinkMenu({name,address}:baselink) {
  
 { visible && (
  
-    <FormLinkNavMenu NavLink={UpdataNavLink} title={"Modifier Link de navigation"} />
+    <FormLinkNavMenu NavLink={UpdataNavLink}  name = {name} address={address} typelink={typelink} title={"Modifier Link de navigation"} />
 )
 }
 

@@ -7,15 +7,18 @@ import "./FromLinkNavMenu.css"
 interface FormAddNavMenuProps {
     NavLink: (args: { dataform: NavDataLink; token: string }) => Promise<any>
    title:string,
+   name:string,
+   address:string,
+   typelink:string,
   }
-export default function FormLinkNavMenu({NavLink,title}:FormAddNavMenuProps) {
+export default function FormLinkNavMenu({NavLink,title,name,address,typelink}:FormAddNavMenuProps) {
     const { token } = useAuth();
   
 
 const [dataform, setDataform] = useState<NavDataLink>({
-  name: "",
-  address: "",
-  typelink: "default", // ✅ valeur initiale
+  name: name,
+  address: address,
+  typelink: typelink, // ✅ valeur initiale
 });
 
   //  Correction ici : accepte input + textarea
@@ -48,11 +51,7 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     await NavLink({ dataform, token })
    
     // Reset du formulaire
-    setDataform({
-      name: "",
-      address: "",
-      typelink: "",
-    });
+
   };
 
   // Tableau dynamique pour tous les champs

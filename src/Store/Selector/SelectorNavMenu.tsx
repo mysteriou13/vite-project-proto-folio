@@ -1,8 +1,8 @@
-import { useAppSelector } from '../hook'
+import { useAppSelector } from '../Hook/hook'
 
 export function navSelector(){
 
-      const { items, loading, error } = useAppSelector(state => state.navMenuSlice);
+      const { items, loading, error } = useAppSelector((state: { navMenuSlice: any; }) => state.navMenuSlice);
 
      return {items};
 }

@@ -2,11 +2,11 @@
 export interface baselink  {   
     name: string;
     address: string;
+    typelink?:string
 }
 /*link nav */
  export interface LinkNav extends baselink {
    _id?:string
-    typelink: string;
   };
 
   export interface ItemsState  {
@@ -17,7 +17,6 @@ export interface baselink  {
 // add nav navLink
 export interface NavDataLink extends baselink {
 _id?:string,
-  typelink:any
 
 };
 
