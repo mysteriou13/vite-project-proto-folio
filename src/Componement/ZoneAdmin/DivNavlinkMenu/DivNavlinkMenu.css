@@ -1,0 +1,12 @@
+.boxdivlinkmenu{
+    display: flex;
+    justify-content: space-between;
+ 
+}
+
+.cardboxdivlinkmenu{
+    
+    border:1px solid black;
+    width: 73vw;
+
+}

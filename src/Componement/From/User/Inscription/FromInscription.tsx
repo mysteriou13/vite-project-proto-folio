@@ -39,7 +39,7 @@ export default function FormInscription() {
   ];
 
   return (
-    <div>
+    <div className="divFromInscription">
   <FromBase  submit={inscription}tapinput={tapinput} title="Inscription"/>
     </div>
   );

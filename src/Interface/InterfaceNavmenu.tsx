@@ -3,6 +3,7 @@ export interface baselink  {
     name: string;
     address: string;
     typelink?:string
+    id?:string,
 }
 /*link nav */
  export interface LinkNav extends baselink {

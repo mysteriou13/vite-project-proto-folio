@@ -2,7 +2,7 @@ import { FormEventHandler,FormEvent, useState } from "react";
 import { inputInterface } from "../../../Interface/InterfaceInput";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import ListeInput from "../ListeInput/ListeInput";
-
+import "./FromBase.css"
 interface FromBaseProps {
   submit:FormEventHandler<HTMLFormElement>
   tapinput: inputInterface[];
@@ -28,12 +28,12 @@ export default function FromBase({ submit, tapinput, title }: FromBaseProps) {
       {showSpinner ? (
         <LoadingSpinner />
       ) : (
-        <form className="fromConnection" onSubmit={handleSubmit}>
-          <div className="divMainConnection">
+        <form className="fromBase" onSubmit={handleSubmit}>
+          <div className="divMainBase">
             <h1>{title}</h1>
             <ListeInput tapinput={tapinput} />
             <div>
-              <input type="submit" value="Envoyer" className="InputSubmitConnection" />
+              <input type="submit" value="Envoyer" className="InputSubmitBase" />
             </div>
           </div>
         </form>

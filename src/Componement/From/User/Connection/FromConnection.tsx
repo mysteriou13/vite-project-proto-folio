@@ -19,8 +19,6 @@ export default function FormConnection() {
     try {
       const result: LoginResponse = await loginUser({ name, password }).unwrap();
 
-      console.log("result",result);
-      
       if (result.connection) {
         dispatch(setLogin(true));
         dispatch(setRoleUser(result.role));
@@ -50,7 +48,9 @@ export default function FormConnection() {
 
   return (
     <div>
+      <div className="divFromConnection">
         <FromBase  tapinput={tapinput} title="connection" submit={LoginSubmit} />
+      </div>
     </div>
   );
 }

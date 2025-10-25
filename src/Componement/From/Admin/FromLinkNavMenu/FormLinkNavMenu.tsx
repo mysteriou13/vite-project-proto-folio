@@ -1,36 +1,43 @@
 import { useState } from "react";
-import type { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
+import  { NavDataLink } from "../../../../Interface/InterfaceNavmenu";
 import FromBase from "../../FromBase/FromBase";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import { useAuth } from "../../../../Store/Selector/SelectorUser";
-import "./FromLinkNavMenu.css"
+
+
 interface FormAddNavMenuProps {
-    NavLink: (args: { dataform: NavDataLink; token: string }) => Promise<any>
+    NavLink: (args: { dataform: NavDataLink; token: string, }) => Promise<any>
    title:string,
    name:string,
    address:string,
-   typelink:string,
+   typelink:any,
+ datalink: ( data: string) => void;
   }
-export default function FormLinkNavMenu({NavLink,title,name,address,typelink}:FormAddNavMenuProps) {
-    const { token } = useAuth();
-  
 
+
+export default function FormLinkNavMenu({NavLink,title,name,address,typelink,datalink}:FormAddNavMenuProps) {
+    const { token } = useAuth();
 const [dataform, setDataform] = useState<NavDataLink>({
   name: name,
   address: address,
-  typelink: typelink, // ✅ valeur initiale
+  typelink: typelink, 
 });
 
-  //  Correction ici : accepte input + textarea
+
+
+  //  Correction ici :  input + textarea
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    
     const { name, value } = e.target;
-    console.log("valueinput ",e.target);
+    
+    datalink(value)
     setDataform({
       ...dataform,
       [name]: value,
     });
+  
   };
 
 const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +56,6 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   
    
     await NavLink({ dataform, token })
-   
     // Reset du formulaire
 
   };
@@ -94,3 +100,5 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     </div>
   );
 }
+
+

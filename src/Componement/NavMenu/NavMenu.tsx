@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../Store/Selector/SelectorUser';
-import { navSelector } from '../../Store/Selector/SelectorNavMenu';
 import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu';
 import  {LinkNav}  from '../../Interface/InterfaceNavmenu';
 import { setNav } from '../../Store/Slice/NavSlice';
