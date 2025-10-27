@@ -1,28 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { NavDataLink } from "../../Interface/InterfaceNavmenu";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { LinkNav } from "../../Interface/InterfaceNavmenu";
 
-type NavMenuState = {
-  items: NavDataLink[];
-  loading: boolean;
-  error: string | null;
+type NavState = {
+  items: { data: LinkNav[] };
 };
 
-const initialState: NavMenuState = {
-  items: [],
-  loading: false,
-  error: null,
+const initialState: NavState = {
+  items: { data: [] },
 };
 
-const navMenuSlice = createSlice({
-  name: "navmenu",
+const navSlice = createSlice({
+  name: "nav",
   initialState,
   reducers: {
-    setNav(state, action) {
+    setNav: (state, action: PayloadAction<{ data: LinkNav[] }>) => {
       state.items = action.payload;
     },
+    removeNavLink: (state, action: PayloadAction<string>) => {
+      state.items.data = state.items.data.filter(
+        (link) => link._id !== action.payload
+      );
+    },
   },
-
 });
 
-export const { setNav } = navMenuSlice.actions;
-export default navMenuSlice.reducer;
+export const { setNav, removeNavLink } = navSlice.actions;
+export default navSlice.reducer;

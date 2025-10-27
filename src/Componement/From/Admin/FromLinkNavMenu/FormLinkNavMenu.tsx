@@ -6,21 +6,25 @@ import { useAuth } from "../../../../Store/Selector/SelectorUser";
 
 
 interface FormAddNavMenuProps {
-    NavLink: (args: { dataform: NavDataLink; token: string, }) => Promise<any>
+
+   NavLink: (args: { dataform: NavDataLink; token: string, }) => Promise<any>
    title:string,
    name:string,
    address:string,
    typelink:any,
- datalink: ( data: string) => void;
+   id:string
+   datalink: ( data: string) => void;
+
   }
 
 
-export default function FormLinkNavMenu({NavLink,title,name,address,typelink,datalink}:FormAddNavMenuProps) {
+export default function FormLinkNavMenu({NavLink,title,name,address,typelink,id,datalink}:FormAddNavMenuProps) {
     const { token } = useAuth();
 const [dataform, setDataform] = useState<NavDataLink>({
   name: name,
   address: address,
   typelink: typelink, 
+  id:id,
 });
 
 

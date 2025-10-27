@@ -1,47 +1,44 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../Store/Selector/SelectorUser';
 import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu';
-import  {LinkNav}  from '../../Interface/InterfaceNavmenu';
+import { LinkNav } from '../../Interface/InterfaceNavmenu';
 import { setNav } from '../../Store/Slice/NavSlice';
 import { useDispatch } from 'react-redux';
 import LinkNavMenu from '../LinkNavMenu/LinkNavMenu';
 import './NavMenu.css';
 
 export default function NavMenu() {
-  let dispacth =  useDispatch();
+  const dispatch = useDispatch();
   const { login, role } = useAuth();
   const { data, isLoading, error } = useGetNavMenuQuery();
- 
-const [filtreitem, setFilterItem] = useState<LinkNav[]>([]);
 
-/*nav menu*/
-useEffect(() => {
+  const [filtreitem, setFilterItem] = useState<LinkNav[]>([]);
 
-dispacth(setNav(data))
+  useEffect(() => {
+    if (!data) return; // ✅ data peut être undefined
 
-  if (!data?.data) return;
+    dispatch(setNav(data));
 
-  let filtered: LinkNav[] = [];
+    let filtered: LinkNav[] = [];
 
-  if (!login) {
-    filtered = data.data.filter(
-      (link:any) =>
-        link.typelink === "default" ||
-        link.typelink === "invisibleuserconnect"
-    );
-  } else if (role === "user") {
-    filtered = data.data.filter((link:any) => link.typelink === "default");
-  } else if (role === "admin") {
-    filtered = data.data.filter(
-      (link:any) =>
-        link.typelink === "default" ||
-        link.typelink === "visibleadminconnect"
-    );
-  }
+    if (!login) {
+      filtered = data.data.filter(
+        (link) =>
+          link.typelink === "default" ||
+          link.typelink === "invisibleuserconnect"
+      );
+    } else if (role === "user") {
+      filtered = data.data.filter((link) => link.typelink === "default");
+    } else if (role === "admin") {
+      filtered = data.data.filter(
+        (link) =>
+          link.typelink === "default" ||
+          link.typelink === "visibleadminconnect"
+      );
+    }
 
-  // 
-  setFilterItem(filtered);
-}, [data, login, role]);
+    setFilterItem(filtered);
+  }, [data, login, role, dispatch]);
 
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>Erreur lors du chargement</p>;
@@ -52,7 +49,7 @@ dispacth(setNav(data))
         <ul className="ul_box">
           {filtreitem.map((link) => (
             <li key={link._id}>
-              <LinkNavMenu name={link.name} address={link.address}   />
+              <LinkNavMenu name={link.name} address={link.address} />
             </li>
           ))}
         </ul>
