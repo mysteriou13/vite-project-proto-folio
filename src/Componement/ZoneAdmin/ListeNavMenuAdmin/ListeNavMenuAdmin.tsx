@@ -1,34 +1,29 @@
 
 import DivNavlinkMenu from "../DivNavlinkMenu/DivNavlinkMenu";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { navSelector } from "../../../Store/Selector/SelectorNavMenu";
-import { LinkNav } from "../../../Interface/InterfaceNavmenu";
 import { useGetNavMenuQuery } from "../../../Store/api/ApiNavMenu";
 import { useDispatch } from "react-redux";
 import { setNav } from "../../../Store/Slice/NavSlice";
-import { NavDataLink } from "../../../Interface/InterfaceNavmenu";
 import "./ListeNavMenuAdmin.css"
 export default function ListeNavMenuAdmin() {
 
      const {items} = navSelector()
      const dispatch = useDispatch();
-     const { data, isLoading, error } = useGetNavMenuQuery();
-     
-  const [datalink, setDatalink] = useState<{ data: LinkNav[] } | undefined>();
+     const { data,refetch} = useGetNavMenuQuery();
+
  
-    useEffect(() => {
-    if (data) {
-      setDatalink(data);
-      dispatch(setNav(data));
-    }
-  }, [data, dispatch]);
+  useEffect(() => {
+  // 🔁 Recharger les données depuis le backend
+  refetch();
+
+  // ✅ Vérifier que data existe avant de l’utiliser
+  if (data) {
+    dispatch(setNav({ data: data.data ?? [] })); // ✅ mise à jour Redux aussi
+  }
+}, [data, refetch, dispatch]);
 
 
-     useEffect(()=>{
-
-      console.log("item delete",items.data);
-        setDatalink(items)
-     },[items])
 
  /*function display or hidden fromulaireupdateNavLink */
     return (
@@ -36,16 +31,19 @@ export default function ListeNavMenuAdmin() {
    <ul className="">
 
    {
-    datalink?.data.map((navlink,id) => (
+    items?.data.map((navlink: {
+      address: any;
+      typelink: any; _id: 
+      any; name: string; 
+       },id: any) => (
      
-          <DivNavlinkMenu
-          key={id}
-            name={navlink.name}
-            address={navlink.address}
-            typelink={navlink.typelink}
-            id={navlink._id}
-          />
-        
+       <DivNavlinkMenu
+        name={navlink.name}
+        address={navlink.address}
+        key={id}
+        typelink={navlink.typelink}
+        id={navlink._id} />
+      
    
    ))}
    
@@ -56,5 +54,4 @@ export default function ListeNavMenuAdmin() {
     </div>
   )
 }
-
 

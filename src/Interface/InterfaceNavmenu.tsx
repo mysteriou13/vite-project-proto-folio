@@ -22,8 +22,9 @@ _id?:string,
 };
 
 export interface AddNavLinkArgs {
-  dataform: NavDataLink  // le lien à ajouter, peut être partiel
-  token: string                  // token d'authentification
+  dataform?: NavDataLink  // le lien à ajouter, peut être partiel
+  token?: string                  // token d'authentification
+   id?:string
 }
 
 // Réponse du backend pour lire tous les navLinks

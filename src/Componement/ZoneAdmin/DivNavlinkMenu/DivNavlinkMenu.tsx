@@ -1,17 +1,21 @@
 import { useState } from 'react'
 import LinkNavMenu from '../../LinkNavMenu/LinkNavMenu'
 import FormLinkNavMenu from '../../From/Admin/FromLinkNavMenu/FormLinkNavMenu'
-import { useUpdateNavLinkMutation } from '../../../Store/api/ApiNavMenu'
+import { useUpdateNavLinkMutation,useGetNavMenuQuery,useDeleteLinkMutation } from '../../../Store/api/ApiNavMenu'
 import { baselink } from '../../../Interface/InterfaceNavmenu'
 import { setNav } from '../../../Store/Slice/NavSlice'
 import { navSelector } from '../../../Store/Selector/SelectorNavMenu'
-import { removeNavLink } from '../../../Store/Slice/NavSlice'
+import { removeNavLink } from '../../../Store/Slice/NavSlice' 
+import { useAuth } from '../../../Store/Selector/SelectorUser'
 import { useDispatch } from 'react-redux'
 import "./DivNavlinkMenu.css"
 
 
 export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
-      const {items} = navSelector()
+    const {items} = navSelector()
+    const {token} = useAuth()
+     const { refetch} = useGetNavMenuQuery();
+    const [deleteLink,] = useDeleteLinkMutation();
     const [UpdataNavLink] = useUpdateNavLinkMutation();
     const [visible, setVisible] = useState<boolean>(false)
     const dispatch = useDispatch();
@@ -31,10 +35,19 @@ export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
     }
 
    /*deletelink */
-   const deleteLink = (id: string) => {
- dispatch(removeNavLink(id));
+const deleteitem = async () => {
+  try {
+    // 🔐 Suppression avec token
+    await deleteLink({ id, token }).unwrap();
+    // 🧹 Supprimer localement dans Redux
+    dispatch(removeNavLink(id!));
 
-      console.log("✅ Lien supprimé :", id);
+    //  Recharger les données
+    await refetch();
+
+  } catch (error) {
+
+  }
 };
 
 
@@ -62,9 +75,9 @@ export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
      <input type = "button" value = "modifier" onClick={displayFromUpdate}/>
   </div>
 
-<div>
-  <input type = "button" value ="supprimer" onClick = {()=>deleteLink(id!)}/>{id}
-</div>
+  <div><input type = "button" value = "suprrimer" onClick={deleteitem}/></div>
+
+
 
 </div>
 

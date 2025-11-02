@@ -24,7 +24,7 @@ addNavLink: builder.mutation<NavDataLink, AddNavLinkArgs>({
       'Content-Type': 'application/json',
     },
   }),
-  invalidatesTags: ['NavMenu'],
+  
 }),
 
 //UpdataNavLink
@@ -41,11 +41,26 @@ UpdateNavLink: builder.mutation<NavDataLink,AddNavLinkArgs>({
 
   })
 
+}),
+
+DeleteLink: builder.mutation<NavDataLink,AddNavLinkArgs>({
+  query: ({ id, token }) => ({
+    url:`/navmenu/deletenavmenu/${id}`,
+    method:'DELETE',
+        headers: {
+      Authorization: `Bearer ${token}`, // 👈 ajouter 'Bearer '
+      'Content-Type': 'application/json',
+    },
+    
+
+  })
+
 })
+
 
   }),
 });
 
 
-export const { useGetNavMenuQuery, useAddNavLinkMutation,useUpdateNavLinkMutation } = ApiNavMenu;
+export const { useGetNavMenuQuery, useAddNavLinkMutation,useUpdateNavLinkMutation,useDeleteLinkMutation } = ApiNavMenu;
 export default ApiNavMenu;
