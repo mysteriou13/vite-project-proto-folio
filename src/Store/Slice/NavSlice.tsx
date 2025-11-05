@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LinkNav } from "../../Interface/InterfaceNavmenu";
 
 type NavState = {
-  items: { data: LinkNav[] };
+  linknav: { data: LinkNav[] };
 };
 
 const initialState: NavState = {
-  items: { data: [] },
+  linknav: { data: [] },
 };
 
 const navSlice = createSlice({
@@ -14,10 +14,10 @@ const navSlice = createSlice({
   initialState,
   reducers: {
     setNav: (state, action: PayloadAction<{ data: LinkNav[] }>) => {
-      state.items = action.payload;
+      state.linknav = action.payload;
     },
     removeNavLink: (state, action: PayloadAction<string>) => {
-      state.items.data = state.items.data.filter(
+      state.linknav.data = state.linknav.data.filter(
         (link) => link._id !== action.payload
       );
     },

@@ -13,7 +13,7 @@ interface FormAddNavMenuProps {
    address:string,
    typelink:any,
    id:string
-   datalink?: ( data: string) => void;
+   datalink: ( data: string) => void;
 
   }
 
@@ -36,7 +36,10 @@ const [dataform, setDataform] = useState<NavDataLink>({
     
     const { name, value } = e.target;
     
-    //datalink(value)
+    if(datalink){
+      datalink(value)
+    }
+
     setDataform({
       ...dataform,
       [name]: value,

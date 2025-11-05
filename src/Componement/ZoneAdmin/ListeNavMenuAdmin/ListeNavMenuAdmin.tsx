@@ -8,7 +8,7 @@ import { setNav } from "../../../Store/Slice/NavSlice";
 import "./ListeNavMenuAdmin.css"
 export default function ListeNavMenuAdmin() {
 
-     const {items} = navSelector()
+     const {linknav} = navSelector()
      const dispatch = useDispatch();
      const { data,refetch} = useGetNavMenuQuery();
 
@@ -21,20 +21,21 @@ export default function ListeNavMenuAdmin() {
   if (data) {
     dispatch(setNav({ data: data.data ?? [] })); // ✅ mise à jour Redux aussi
   }
-}, [data, refetch, dispatch]);
+}, [data]);
 
 
 
- /*function display or hidden fromulaireupdateNavLink */
+
     return (
   <div>
    <ul className="">
 
    {
-    items?.data.map((navlink: {
-      address: any;
-      typelink: any; _id: 
-      any; name: string; 
+    linknav?.data.map((navlink: {
+      address: string;
+      typelink: string;
+       _id: any; 
+       name: string; 
        },id: any) => (
      
        <DivNavlinkMenu
