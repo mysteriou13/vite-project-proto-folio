@@ -15,7 +15,7 @@ export default function NavMenu() {
   const [filtreitem, setFilterItem] = useState<LinkNav[]>([]);
 
   useEffect(() => {
-    if (!data) return; // ✅ data peut être undefined
+    if (!data) return; 
 
     dispatch(setNav(data));
 

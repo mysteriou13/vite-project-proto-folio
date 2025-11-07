@@ -10,9 +10,9 @@ import { useAuth } from '../../../Store/Selector/SelectorUser'
 import { useDispatch } from 'react-redux'
 import "./DivNavlinkMenu.css"
 
-
+/*componement with link navlink et button update and delete in admin panel*/
 export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
-    const {items} = navSelector()
+    const {linknav} = navSelector()
     const {token} = useAuth()
      const { refetch} = useGetNavMenuQuery();
     const [deleteLink,] = useDeleteLinkMutation();
@@ -20,16 +20,11 @@ export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
     const [visible, setVisible] = useState<boolean>(false)
     const dispatch = useDispatch();
 
-
-    const handlenamelink = (data:string)=>{
-      console.log("updatelink",items);
-    
-         const updatedItems = items.data?.map((link: { _id: string}) =>
-      link._id === id ? { ...link, name: data } : link
+   /*update data link in the front*/
+    const handlenamelink = (name:string, data:string)=>{
+         const updatedItems = linknav.data?.map((link: { _id: string}) =>
+      link._id === id ? { ...link, [name]: data } : link
     );
-
-         console.log("updateitems",updatedItems);
-
         dispatch(setNav({ data: updatedItems }));
    
     }
@@ -37,12 +32,11 @@ export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
    /*deletelink */
 const deleteitem = async () => {
   try {
-    // 🔐 Suppression avec token
+    // delete link in the  back and the in the front
     await deleteLink({ id, token }).unwrap();
-    // 🧹 Supprimer localement dans Redux
     dispatch(removeNavLink(id!));
 
-    //  Recharger les données
+    //  refrech data back in the front
     await refetch();
 
   } catch (error) {
@@ -76,8 +70,6 @@ const deleteitem = async () => {
   </div>
 
   <div><input type = "button" value = "suprrimer" onClick={deleteitem}/></div>
-
-
 
 </div>
 

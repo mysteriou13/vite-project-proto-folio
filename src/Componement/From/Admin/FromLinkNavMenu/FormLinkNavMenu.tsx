@@ -13,7 +13,7 @@ interface FormAddNavMenuProps {
    address:string,
    typelink:any,
    id:string
-   datalink: ( data: string) => void;
+   datalink: ( name:string, data: string) => void;
 
   }
 
@@ -36,9 +36,9 @@ const [dataform, setDataform] = useState<NavDataLink>({
     
     const { name, value } = e.target;
     
-    if(datalink){
-      datalink(value)
-    }
+    
+      datalink?.(name ,value)
+    
 
     setDataform({
       ...dataform,
@@ -61,9 +61,7 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       return;
     }
   
-   
     await NavLink({ dataform, token })
-    // Reset du formulaire
 
   };
 
@@ -87,8 +85,8 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   label: "Type du lien",
   name: "typelink",
   type: "radio",
-  value: dataform.typelink,  // ✅ value = state
-  onChange: handleRadioChange, // ✅ pas besoin de cast
+  value: dataform.typelink,  
+  onChange: handleRadioChange, 
   options: [
     { label: "Défaut", value: "default" },
     { label: "User", value: "user" },
