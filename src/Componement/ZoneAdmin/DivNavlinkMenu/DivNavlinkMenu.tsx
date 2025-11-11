@@ -15,7 +15,7 @@ export default function DivNavlinkMenu({name,address,typelink,id}:baselink) {
     const {linknav} = navSelector()
     const {token} = useAuth()
      const { refetch} = useGetNavMenuQuery();
-    const [deleteLink,] = useDeleteLinkMutation();
+    const [deleteLink] = useDeleteLinkMutation();
     const [UpdataNavLink] = useUpdateNavLinkMutation();
     const [visible, setVisible] = useState<boolean>(false)
     const dispatch = useDispatch();
