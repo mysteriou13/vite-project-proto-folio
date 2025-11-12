@@ -1,24 +1,16 @@
 import { useState } from "react";
-import { useInscriptionUserMutation } from "../../../../Store/api/ApiUser";
 import "./FromInscription.css";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromBase from "../../FromBase/FromBase";
+import { User } from "../../../../Utilis/UserUtilis";
 
 export default function FormInscription() {
   
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [role] = useState<string>("user");
-  const [inscriptionUser] = useInscriptionUserMutation();
+  const {InscriptionUser} = User()
 
-  const inscription = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const result = await inscriptionUser({ name, password, role });
-    if (result) {
-      console.log("Utilisateur inscrit :", result);
-    }
-  };
+ 
 
   // ✅ tableau de config pour générer les inputs
   let tapinput:inputInterface[] = [
@@ -40,7 +32,7 @@ export default function FormInscription() {
 
   return (
     <div className="divFromInscription">
-  <FromBase  submit={inscription}tapinput={tapinput} title="Inscription"/>
+  <FromBase  submit={(e)=>InscriptionUser(e,name,password,"user") }tapinput={tapinput} title="Inscription"/>
     </div>
   );
 }

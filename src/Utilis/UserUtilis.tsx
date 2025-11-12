@@ -4,11 +4,11 @@ import { useApiData } from "./CallApi";
 import { useAppDispatch } from "../Store/Hook/hook";
 import { setLogin, setRoleUser, setToken } from "../Store/Slice/LoginSlice";
 
-export function useLoginSubmit() {
+export function User() {
   const dispatch = useAppDispatch();
   const { handleRequest } = useApiData();
 
-  const LoginSubmit = async (
+  const LoginUser = async (
     e: React.FormEvent<HTMLFormElement>,
     name: string,
     password: string
@@ -33,5 +33,29 @@ export function useLoginSubmit() {
     }
   };
 
-  return { LoginSubmit };
+  
+     const InscriptionUser = async (
+       e: React.FormEvent<HTMLFormElement>,
+    name: string,
+    password: string,
+    role:string
+     ) => {
+    e.preventDefault();
+
+       const result = await handleRequest(
+            "/user/inscription",
+            "POST",
+            "",
+            { name, password,role }
+          );
+
+
+
+    if (result) {
+      console.log("Utilisateur inscrit :", result);
+    }
+  };
+
+
+  return { LoginUser,InscriptionUser };
 }

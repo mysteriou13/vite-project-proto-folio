@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromBase from "../../FromBase/FromBase";
-import { useLoginSubmit } from "../../../../Utilis/UserUtilis";
+import { User } from "../../../../Utilis/UserUtilis";
 import "./FromConnection.css";
 
 export default function FormConnection() {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { LoginSubmit } = useLoginSubmit();
+  const { LoginUser } = User();
   
 
   const tapinput: inputInterface[] = [
@@ -30,7 +30,7 @@ export default function FormConnection() {
   return (
     <div>
       <div className="divFromConnection">
-        <FromBase  tapinput={tapinput} title="connection" submit={(e) => LoginSubmit(e, name, password)} />
+        <FromBase  tapinput={tapinput} title="connection" submit={(e) => LoginUser(e, name, password)} />
       </div>
     </div>
   );
