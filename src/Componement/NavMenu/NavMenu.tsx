@@ -1,43 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Key } from 'react';
 import { useAuth } from '../../Store/Selector/SelectorUser';
 import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu';
 import { LinkNav } from '../../Interface/InterfaceNavmenu';
-import { setNav } from '../../Store/Slice/NavSlice';
+import NavMenuUtilise from "../../Utilis/NavMenuUtilise"
 import { useDispatch } from 'react-redux';
+import { navSelector } from '../../Store/Selector/SelectorNavMenu';
 import LinkNavMenu from '../LinkNavMenu/LinkNavMenu';
 import './NavMenu.css';
 
 export default function NavMenu() {
+
   const dispatch = useDispatch();
+
   const { login, role } = useAuth();
+  const {linknav} = navSelector()
+  const {readNavLink} = NavMenuUtilise()
   const { data, isLoading, error } = useGetNavMenuQuery();
 
-  const [filtreitem, setFilterItem] = useState<LinkNav[]>([]);
-
   useEffect(() => {
-    if (!data) return; 
+  
+     readNavLink()
 
-    dispatch(setNav(data));
-
-    let filtered: LinkNav[] = [];
-
-    if (!login) {
-      filtered = data.data.filter(
-        (link) =>
-          link.typelink === "default" ||
-          link.typelink === "invisibleuserconnect"
-      );
-    } else if (role === "user") {
-      filtered = data.data.filter((link) => link.typelink === "default");
-    } else if (role === "admin") {
-      filtered = data.data.filter(
-        (link) =>
-          link.typelink === "default" ||
-          link.typelink === "visibleadminconnect"
-      );
-    }
-
-    setFilterItem(filtered);
   }, [data, login, role, dispatch]);
 
   if (isLoading) return <p>Chargement...</p>;
@@ -47,7 +30,7 @@ export default function NavMenu() {
     <div className="box_header">
       <nav>
         <ul className="ul_box">
-          {filtreitem.map((link) => (
+          {linknav.data.map((link: { _id: Key | null | undefined; name: string; address: string; }) => (
             <li key={link._id}>
               <LinkNavMenu name={link.name} address={link.address} />
             </li>
