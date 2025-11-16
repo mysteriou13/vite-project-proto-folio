@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromBase from "../../FromBase/FromBase";
-import { User } from "../../../../Utilis/UserUtilis";
+import { User } from "../../../../hooks/UserHook";
 import "./FromConnection.css";
 
 export default function FormConnection() {

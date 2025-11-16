@@ -1,23 +1,24 @@
-import { useState,useEffect } from "react";
+
 import { useAuth } from "../Store/Selector/SelectorUser";
 import { useApiData } from "./CallApi";
 import { useDispatch } from "react-redux";
 import { setNav } from "../Store/Slice/NavSlice";
 import { LinkNav } from "../Interface/InterfaceNavmenu";
 
-export default function NavMenuUtilise() {
+export default function NavMenuHook() {
 
 const {login,role} = useAuth();
 const {handleRequest} = useApiData()
 const dispatch = useDispatch()
+
+/*display nav link in the header*/
 const readNavLink = async ()=>{
 
-  let data = await handleRequest("/navmenu/readnavmenu","GET")
-
-
-    if (!data) return; 
+let data =  await handleRequest("/navmenu/readnavmenu","GET")
 
     let filtered: LinkNav[] = [];
+
+    if (!data) return; 
 
     if (!login) {
       filtered = data.data.filter(
@@ -41,6 +42,11 @@ const readNavLink = async ()=>{
 
 }
 
+ const AdminNavlink = async ()=>{
+
+ }
+
  return  {readNavLink}
+
 
 }

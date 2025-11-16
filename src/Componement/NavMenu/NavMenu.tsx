@@ -2,7 +2,7 @@ import { useState, useEffect, Key } from 'react';
 import { useAuth } from '../../Store/Selector/SelectorUser';
 import { useGetNavMenuQuery } from '../../Store/api/ApiNavMenu';
 import { LinkNav } from '../../Interface/InterfaceNavmenu';
-import NavMenuUtilise from "../../Utilis/NavMenuUtilise"
+import NavMenuUtilise from "../../hooks/NavMenuHook"
 import { useDispatch } from 'react-redux';
 import { navSelector } from '../../Store/Selector/SelectorNavMenu';
 import LinkNavMenu from '../LinkNavMenu/LinkNavMenu';

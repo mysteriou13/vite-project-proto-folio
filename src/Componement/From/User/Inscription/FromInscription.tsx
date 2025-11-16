@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./FromInscription.css";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromBase from "../../FromBase/FromBase";
-import { User } from "../../../../Utilis/UserUtilis";
+import { User } from "../../../../hooks/UserHook";
 
 export default function FormInscription() {
   
