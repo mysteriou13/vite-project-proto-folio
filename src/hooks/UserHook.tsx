@@ -1,4 +1,5 @@
 // 📁 src/Hooks/useLoginSubmit.ts
+import { useNavigate } from "react-router";
 import { LoginResponse } from "../Interface/interfaceUse";
 import { useApiData } from "./CallApi";
 import { useAppDispatch } from "../Store/Hook/hook";
@@ -6,6 +7,7 @@ import { setLogin, setRoleUser, setToken } from "../Store/Slice/LoginSlice";
 
 export function User() {
   const dispatch = useAppDispatch();
+  let navigate = useNavigate();
   const { handleRequest } = useApiData();
 
   const LoginUser = async (
@@ -24,13 +26,20 @@ export function User() {
       );
 
       if (result.connection) {
+        
+        localStorage.setItem("token",result.token);
+        localStorage.setItem("role",result.role);
+
         dispatch(setLogin(true));
         dispatch(setRoleUser(result.role));
         dispatch(setToken(result.token));
+        navigate("/")
       }
     } catch (error) {
       console.error(" error connection :", error);
     }
+
+
   };
 
   

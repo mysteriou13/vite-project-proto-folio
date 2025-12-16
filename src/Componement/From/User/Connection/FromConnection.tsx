@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import { inputInterface } from "../../../../Interface/InterfaceInput";
 import FromBase from "../../FromBase/FromBase";
 import { User } from "../../../../hooks/UserHook";
@@ -8,7 +8,6 @@ export default function FormConnection() {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { LoginUser } = User();
-  
 
   const tapinput: inputInterface[] = [
     {
@@ -30,7 +29,9 @@ export default function FormConnection() {
   return (
     <div>
       <div className="divFromConnection">
-        <FromBase  tapinput={tapinput} title="connection" submit={(e) => LoginUser(e, name, password)} />
+        
+         <FromBase  tapinput={tapinput} title="connection" submit={(e) => LoginUser(e, name, password)} />
+         
       </div>
     </div>
   );

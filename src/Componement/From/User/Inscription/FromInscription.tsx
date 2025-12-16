@@ -10,8 +10,6 @@ export default function FormInscription() {
   const [password, setPassword] = useState<string>("");
   const {InscriptionUser} = User()
 
- 
-
   // ✅ tableau de config pour générer les inputs
   let tapinput:inputInterface[] = [
     {

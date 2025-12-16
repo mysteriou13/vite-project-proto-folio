@@ -1,16 +1,15 @@
 
 import { Outlet } from 'react-router'
 import TitlePage from '../../../Componement/TitlePage/TitlePage'
-import NavMenuAdmin from '../../../Componement/ZoneAdmin/NavMenuAdmin/NavMenuAdmin'
+import ListeNavMenuAdminMenu from '../../../Componement/ZoneAdmin/ListeNavAdminMenu/ListeNavMenuAdminMenu'
 import FormConnection from '../../../Componement/From/User/Connection/FromConnection'
 import { useAuth } from '../../../Store/Selector/SelectorUser'
-import './ZoneAdmin.css'
-export default function ZoneAdmin() {
+import "./HomeAdmin.css"
+export default function HomeAdmin() {
 
-  const {role} = useAuth();
   return (
     <div  className = "main_layout">
-  
+
       <div className='barre_layout'> 
            <TitlePage title="ZoneAdmin" classStyle="title_layout"/>
         </div>
@@ -19,11 +18,11 @@ export default function ZoneAdmin() {
    <div> 
 
   
-      {localStorage.getItem("role") === "admin" ?(
+      {localStorage.getItem('role') === "admin" ?(
       <main>
         <div className='boxadmin'>
           <div>
-          <NavMenuAdmin/>
+         <ListeNavMenuAdminMenu nameclass={'HomeAdmin_main_nav_menu'}/>
           </div>
           <div><Outlet/></div>
           </div>

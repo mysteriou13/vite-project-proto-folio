@@ -1,0 +1,10 @@
+.listeNava_main_nav_menu{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    background: linear-gradient(to top, #2067DA 0%, #3079ED 50%, #3D87FC 80%);
+        width: 22vw;
+    min-height: 71vh;
+
+}

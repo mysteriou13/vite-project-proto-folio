@@ -1,0 +1,20 @@
+.div_boxLayoutAdminProject{
+      display: flex;
+    justify-content: space-evenly;
+    width: 28vw;
+   font-size: 2em;
+}
+
+.MainLayoutAdminProject{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+
+
+.OutletLayoutAdminProject{
+    position: relative;
+  left: 2vw;
+  top: 2vh;
+
+}

@@ -4,7 +4,7 @@ import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import ListeInput from "../ListeInput/ListeInput";
 import "./FromBase.css"
 interface FromBaseProps {
-  submit:FormEventHandler<HTMLFormElement>
+  submit:(e: FormEvent<HTMLFormElement>) => Promise<void>
   tapinput: inputInterface[];
   title: string;
   
@@ -13,14 +13,15 @@ interface FromBaseProps {
 export default function FromBase({ submit, tapinput, title }: FromBaseProps) {
   const [showSpinner, setShowSpinner] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();          // empêcher le rechargement de page
     setShowSpinner(true);        // afficher le spinner
 
-    setTimeout(() => {
-      setShowSpinner(false);     // cacher le spinner après 3s
-      submit(e);                 // appeler la vraie fonction submit
-    }, 500);
+    try {
+      await submit(e);           // attendre la fonction submit
+    } finally {
+      setShowSpinner(false);     // cacher le spinner après
+    }
   };
 
   return (

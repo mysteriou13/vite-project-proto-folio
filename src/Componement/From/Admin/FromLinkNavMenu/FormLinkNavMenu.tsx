@@ -13,7 +13,7 @@ interface FormAddNavMenuProps {
    address:string,
    typelink:any,
    id:string
-   datalink: ( name:string, data: string) => void;
+   datalink?: ( name:string, data: string) => void;
 
   }
 

@@ -19,7 +19,7 @@ export default function ListeInput({ tapinput }: ListeInputProps) {
         key={index}
         name={field.name}
         value={field.value}
-        onChange={field.onChange}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => field.onChange(e as any)}
       />
     );
   } else if (field.type === "radio") {

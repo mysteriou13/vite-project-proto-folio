@@ -1,0 +1,26 @@
+.AdminConnection{
+    position: relative;
+    top: -7%;
+    left: 23%;
+}
+
+.boxadmin{
+ display: flex;
+    position: relative;
+    top: 3vh;
+}
+
+
+
+.HomeAdmin_main_nav_menu{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    
+
+}

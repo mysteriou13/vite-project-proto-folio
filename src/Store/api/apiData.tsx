@@ -26,10 +26,11 @@ return createApi({
 endpoints:(builder)=>({
 
   Data: builder.mutation<any,RequestArgs>({
-      query:({urldata,method,data}) => ({
+      query:({urldata,method,data,token}) => ({
        url:urldata,
        method:method,
-       body:data
+       body:data,
+       headers: token ? { Authorization: `Bearer ${token}` } : {}
         })
     })
 
