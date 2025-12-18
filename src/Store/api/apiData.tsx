@@ -13,12 +13,12 @@ return createApi({
 
   baseQuery: fetchBaseQuery({
       baseUrl: import.meta.env.VITE_API_URL,
-      prepareHeaders: (headers) => {
+      prepareHeaders: (headers, { getState }) => {
    
         if (token) {
           headers.set("Authorization", `Bearer ${token}`);
         }
-        headers.set("Content-Type", "application/json");
+        // Don't set Content-Type for FormData, let the browser set it
         return headers;
       },
     }),

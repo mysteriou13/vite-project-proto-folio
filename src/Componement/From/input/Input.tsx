@@ -9,7 +9,7 @@ export default function Input({ label, type, name, value, onChange }: inputInter
         className="ClassinputConnection"
         type={type}
         name={name}
-        value={value}
+        {...(type !== 'file' && { value })}
         onChange={onChange}  // ← ici tu relies bien au setter
         required
       />

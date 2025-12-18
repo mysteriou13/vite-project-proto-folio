@@ -18,31 +18,35 @@ export default function FromProject() {
   const [name, setName] = useState<string>("");
   const [descriptionproject, setdescriptionproject] = useState<string>("");
   const [textproject, settextproject] = useState<string>(""); 
-  const [pictureproject, setpictureproject] = useState<string>("");
+  const [pictureproject, setpictureproject] = useState<File | null>(null);
   
 async function submitProject(e:FormEvent<HTMLFormElement>){
   e.preventDefault();
 
   try {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('descriptionproject', descriptionproject);
+    formData.append('textproject', textproject);
+    if (pictureproject) {
+      formData.append('imageproject', pictureproject);
+    }
 
-     await handleRequest(
+      const result = await handleRequest(
       "/project/add",
       "POST",
       datatoken,
-      {
-        title: name,
-        description: descriptionproject,
-        textproject: textproject,
-        pictureproject: pictureproject
-      }
+      formData
     );
+
+    console.log("Project added successfully:", result);
+
     // Reset form after successful submission
-    if (isMountedRef.current) {
+    
       setName("");
       setdescriptionproject("");
       settextproject("");
-      setpictureproject("");
-    }
+      setpictureproject(null);
     
   } catch(error) {
     console.error("Error adding project:", error);
@@ -70,8 +74,8 @@ async function submitProject(e:FormEvent<HTMLFormElement>){
       label: " picture of project",
       name: "picture of project",
       type: "file",
-      value: pictureproject,
-      onChange: (e) => setpictureproject(e.target.value),
+      value: "", // For file inputs, value is not set
+      onChange: (e) => setpictureproject(e.target.files?.[0] || null),
     },
 
 
