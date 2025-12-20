@@ -1,57 +1,37 @@
-import { useState, useRef, useEffect } from "react"
-import { FormEvent } from "react"
+import { useState,useEffect, use } from "react"
 import FromBase from "../../FromBase/FromBase"
 import { inputInterface } from "../../../../Interface/InterfaceInput"
-import { useApiData } from "../../../../hooks/CallApi"
+import { Project } from "../../../../hooks/ProjectHook"
+import { set } from "mongoose";
 
 export default function FromProject() {
-    let datatoken:string = localStorage.getItem("token") || "";
-    const { handleRequest } = useApiData();
-    const isMountedRef = useRef(true);
-
-    useEffect(() => {
-      return () => {
-        isMountedRef.current = false;
-      };
-    }, []);
 
   const [name, setName] = useState<string>("");
   const [descriptionproject, setdescriptionproject] = useState<string>("");
   const [textproject, settextproject] = useState<string>(""); 
   const [pictureproject, setpictureproject] = useState<File | null>(null);
+
+  const [result,setResult] = useState<boolean>(false);
   
-async function submitProject(e:FormEvent<HTMLFormElement>){
-  e.preventDefault();
+  function handleResultChange(newResult: boolean) {
+    setResult(newResult);
+  }
 
-  try {
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('descriptionproject', descriptionproject);
-    formData.append('textproject', textproject);
-    if (pictureproject) {
-      formData.append('imageproject', pictureproject);
-    }
+    const { submitProject} = Project(name,descriptionproject,textproject,pictureproject, handleResultChange);
 
-      const result = await handleRequest(
-      "/project/add",
-      "POST",
-      datatoken,
-      formData
-    );
 
-    console.log("Project added successfully:", result);
-
-    // Reset form after successful submission
-    
+  useEffect(() => {
+    if (result) {
       setName("");
       setdescriptionproject("");
       settextproject("");
       setpictureproject(null);
-    
-  } catch(error) {
-    console.error("Error adding project:", error);
-  }
-}
+      setResult(false);
+    }
+  }, [result]);
+
+  /*function send result  child to parent*/
+
 
   const tapinput : inputInterface []= [
      {
@@ -90,9 +70,10 @@ async function submitProject(e:FormEvent<HTMLFormElement>){
 
   ]
 
+
   return (
     <div>
- 
+     {result && <p>✅ Projet ajouté</p>}
    <FromBase submit={submitProject} tapinput={tapinput} title={"Ajouter un projet"}
       
   
